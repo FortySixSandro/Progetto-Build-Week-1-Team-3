@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz App</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="brand">
-      <img src="assets/epicode-logo.png" alt="Epicode" class="brand-logo" />
-    </header>
-    <main id="app">
-      <!-- qui dentro vengono renderizzate le tre schermate dal JavaScript:
-           welcome, quiz, results -->
-    </main>
-    <script src="script.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <header class="brand">
+    <img src="assets/img/epicode-logo.png" alt="Epicode" class="brand-logo" />
+  </header>
+  <main id="app">
+
+    <div class="title">
+      <h1>Benvenuto al tuo esame</h1>
+    </div>
+
+    <div class="paragraph">
+      <p>Una serie di 10 domande sul mondo dell'informativa e del web. Per ogni domanda hai 20 secondi di tempo.</p>
+    </div>
+
+    <div class="list">
+      <ul>
+        <li>Ogni domanda è a tempo e può ricevere una sola risposta.</li>
+        <li>Una volta cliccata una risposta, la domanda è chiusa.</li>
+        <li>Il quiz dura circa 3 minuti.</li>
+      </ul>
+    </div>
+
+    <button class="button" type="button">Inizia</button>
+
+  </main>
+  <script src="assets/js/script.js"></script>
+</body>
+
 </html>
