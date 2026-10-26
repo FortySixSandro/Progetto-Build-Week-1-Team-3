@@ -76,10 +76,28 @@ body {
   cursor: pointer;
 }
 
-button .answer{
-
+.answer {
+  border: 2px solid #1b1535;
+  text-align: left;
+  width: 100%;
+  padding: 0.6rem 1.3rem;
+  background-color: white;
+  color: #1b1535;
+  border-radius: 8px;
+  margin: 8px;
 }
 
-button .answer:hover{
+.answer:hover {
+  background-color: #303859;
+  border: 2px solid #1b1535;
+  color: white;
+  cursor: pointer;
+}
 
+.true {
+  background-color: green;
+}
+
+.false {
+  background-color: red;
 }

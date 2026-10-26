@@ -81,7 +81,7 @@ const QUESTIONS = [
 /* Costanti del quiz */
 const TOTAL_QUESTIONS = QUESTIONS.length;
 const PASS_THRESHOLD = 60;     // percentuale minima per "Promosso"
-const FEEDBACK_DELAY = 1500;   // ms di attesa dopo risposta prima di avanzare
+const FEEDBACK_DELAY = 2500;   // ms di attesa dopo risposta prima di avanzare
 const TIMER_DURATION = 20;     // secondi per ogni domanda
 
 /* Stato globale */
@@ -106,7 +106,23 @@ const paragraph = document.querySelector('#paragraph');
 const list = document.querySelector('#list');*/
 
 const container = document.querySelector('.container');
+const app = document.querySelector('#app');
+const totalQuestion = document.querySelector('totalQuestion');
+const questNum = document.querySelector('questNum');
+const countDown = document.querySelector('countDown');
+const containerDomande = document.querySelector('containerDomande');
+const answer = document.querySelector('.answer');
 
+function render() {
+  container.textContent = '';
+  if (currentScreen === 'welcome'){
+    renderWelcome();
+  } else if (currentScreen === 'quiz'){
+    renderQuiz();
+  } else if (currentScreen === 'results') {
+    renderResults();
+  }
+}
 
 function renderWelcome() {
   const divTitle = document.createElement('div');
@@ -147,6 +163,42 @@ function renderWelcome() {
 
   container.appendChild(button);
 
+  /* button.addEventListener('click', () => {
+    render(renderQuiz);
+ });*/
+
 }
 
-renderWelcome();
+// renderWelcome();
+
+function renderQuiz() {
+  container.textContent = '';
+
+  const divTotalQuestion = document.createElement('div');
+  const 
+  
+  
+}
+/*function estrai() {
+    if (usciti.length >= 90) {
+        alert('Tutti i numeri sono stati estratti!');
+        return;
+    }
+
+    const disponibili = [];
+    for (let i = 1; i <= 90; i++) {
+        if (!usciti.includes(i)) {
+            disponibili.push(i);
+        }
+    }
+
+    const indice = Math.floor(Math.random() * disponibili.length);
+    const numeroEstratto = disponibili[indice];
+
+    usciti.push(numeroEstratto);
+
+    ultimoNumeroJs.textContent = numeroEstratto;
+
+    rendiCronologia();
+    rendiTabellone();
+}*/
