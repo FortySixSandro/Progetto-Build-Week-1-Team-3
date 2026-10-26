@@ -35,13 +35,11 @@ body {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
-.button {
-  padding: 0.6rem 1.3rem;
-  background-color: #1b1535;
-  color: white;
-  border-radius: 8px;
-  border: none;
-}
+/* Aggiungi qui le tue regole CSS per:
+   - .welcome (titolo, intro, button Inizia)
+   - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
+   - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
+*/
 
 .paragraph {
   margin-bottom: 1.1rem;
@@ -55,7 +53,7 @@ body {
 }
 
 .list {
-  padding-left:15px;
+  padding-left: 15px;
   margin-bottom: 1.1rem;
 }
 
@@ -64,10 +62,24 @@ body {
   color: #494b52;
 }
 
+/*BOTTONI */
+.button {
+  padding: 0.6rem 1.3rem;
+  background-color: #1b1535;
+  color: white;
+  border-radius: 8px;
+  border: none;
+}
 
-/* Aggiungi qui le tue regole CSS per:
-   - .welcome (titolo, intro, button Inizia)
-   - .quiz (counter, timer, domanda, button risposta, classi correct/wrong)
-   - .results (percentuale, barre orizzontali, verdetto promosso/bocciato, restart)
-*/
+.button:hover {
+  background-color: #303859;
+  cursor: pointer;
+}
 
+button .answer{
+
+}
+
+button .answer:hover{
+
+}

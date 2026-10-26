@@ -100,3 +100,55 @@ let timerId = null;
    - handleTimeUp() per il tempo scaduto
    - advance() per andare alla domanda successiva o ai risultati
 */
+
+/*const app = document.querySelector('#app');
+const paragraph = document.querySelector('#paragraph');
+const list = document.querySelector('#list');*/
+
+const container = document.querySelector('.container');
+
+
+function renderWelcome() {
+  const divTitle = document.createElement('div');
+  const title = document.createElement('h1');
+  divTitle.classList.add('title');
+  title.textContent = 'Benvenuto al tuo esame';
+
+  container.appendChild(divTitle);
+  divTitle.appendChild(title);
+
+  const divParagraph = document.createElement('div');
+  const paragraph = document.createElement('p');
+  divParagraph.classList.add('paragraph');
+  paragraph.textContent = 'Una serie di 10 domande sul mondo dell\'informativa e del web. Per ogni domanda hai 20 secondi di tempo.';
+
+  container.appendChild(divParagraph);
+  divParagraph.appendChild(paragraph);
+
+  const divList = document.createElement('div');
+  divList.classList.add('list');
+  const ul = document.createElement('ul');
+  const li1 = document.createElement('li');
+  li1.textContent = 'Ogni domanda è a tempo e può ricevere una sola risposta.';
+  const li2 = document.createElement('li');
+  li2.textContent = 'Una volta cliccata una risposta, la domanda è chiusa.';
+  const li3 = document.createElement('li');
+  li3.textContent = 'Il quiz dura circa 3 minuti.';
+
+  container.appendChild(divList);
+  divList.appendChild(ul);
+  ul.appendChild(li1);
+  ul.appendChild(li2);
+  ul.appendChild(li3);
+
+  const button = document.createElement('button');
+  button.classList.add('button');
+  button.textContent = 'Inizia';
+
+  container.appendChild(button);
+
+
+
+}
+
+renderWelcome();
