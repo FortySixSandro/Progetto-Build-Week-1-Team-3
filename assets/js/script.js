@@ -115,15 +115,19 @@ const answer = document.querySelector('.answer');
 
 function render() {
   container.textContent = '';
-  if (currentScreen === 'welcome'){
+
+  if (currentScreen === 'welcome') {
     renderWelcome();
-  } else if (currentScreen === 'quiz'){
+  } else if (currentScreen === 'quiz') {
     renderQuiz();
   } else if (currentScreen === 'results') {
     renderResults();
   }
 }
 
+
+
+// Funzione renderWelcome finita, da modificare e da aggiungere il click per iniziare
 function renderWelcome() {
   const divTitle = document.createElement('div');
   const title = document.createElement('h1');
@@ -164,21 +168,21 @@ function renderWelcome() {
   container.appendChild(button);
 
   /* button.addEventListener('click', () => {
-    render(renderQuiz);
+    currentScreen = 'quiz';
+    render();
  });*/
 
 }
-
-// renderWelcome();
-
+//DA FINIRE
 function renderQuiz() {
   container.textContent = '';
 
   const divTotalQuestion = document.createElement('div');
-  const 
-  
-  
+
 }
+
+//Funzione estrai della tombola da modificare e adattare al quiz
+
 /*function estrai() {
     if (usciti.length >= 90) {
         alert('Tutti i numeri sono stati estratti!');
@@ -202,3 +206,7 @@ function renderQuiz() {
     rendiCronologia();
     rendiTabellone();
 }*/
+
+
+
+//
