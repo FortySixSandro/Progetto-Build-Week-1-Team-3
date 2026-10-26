@@ -147,8 +147,6 @@ function renderWelcome() {
 
   container.appendChild(button);
 
-
-
 }
 
 renderWelcome();
