@@ -102,10 +102,6 @@ let timeLeft = TIMER_DURATION;
    - advance() per andare alla domanda successiva o ai risultati
 */
 
-/*const app = document.querySelector('#app');
-const paragraph = document.querySelector('#paragraph');
-const list = document.querySelector('#list');*/
-
 const container = document.querySelector('.container');
 const app = document.querySelector('#app');
 const countDown = document.querySelector('countDown');
