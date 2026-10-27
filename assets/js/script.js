@@ -81,7 +81,7 @@ const QUESTIONS = [
 /* Costanti del quiz */
 const TOTAL_QUESTIONS = QUESTIONS.length;
 const PASS_THRESHOLD = 60;     // percentuale minima per "Promosso"
-const FEEDBACK_DELAY = 2500;   // ms di attesa dopo risposta prima di avanzare
+const FEEDBACK_DELAY = 1000;   // ms di attesa dopo risposta prima di avanzare
 const TIMER_DURATION = 20;     // secondi per ogni domanda
 
 /* Stato globale */
@@ -123,7 +123,6 @@ function render() {
     renderResults();
   }
 }
-
 
 // Funzione renderWelcome finita, da modificare e da aggiungere il click per iniziare
 function renderWelcome() {
@@ -287,6 +286,7 @@ function startTimer() {
 function updateTimerDisplay() {
   const display = document.querySelector('#timerDisplay');
   if (display) {
+    //Numero che diminiusce
     display.textContent = `${timeLeft}s`;
     // Colore urgente sotto i 5 secondi
     if (timeLeft <= 5) {
