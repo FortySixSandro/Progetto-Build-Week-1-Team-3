@@ -243,7 +243,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
   allBtns.forEach(btn => {
     btn.disabled = true;
   });
-
+// Se la risposta è corretta prende la classe true, che lo colora di verde, se è errata aggiunge la classe false alla risposta errata e la risposta giusta incrementa lo score.
   if (answer === correctAnswer) {
     clickedBtn.classList.add('true');
     score++;
@@ -255,7 +255,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
       }
     })
   }
-}
+};
 
 //Funzione per andare avanti con le domande
 function advance() {
@@ -267,11 +267,11 @@ function advance() {
     currentScreen = 'results';
     render();
   }
-}
+};
 
 //Funzione per far iniziare il timer
 function startTimer() {
-  clearInterval(timerId);
+  clearInterval(timerId); 
 
   timeLeft = TIMER_DURATION;
   updateTimerDisplay();
@@ -285,7 +285,7 @@ function startTimer() {
       handleTimeUp();
     }
   }, 1000);
-}
+};
 
 //Funzione per far cambiare il colore al timer quando arriva a 5 secondi
 function updateTimerDisplay() {
@@ -302,9 +302,9 @@ function updateTimerDisplay() {
       display.style.color = '#fff';
     }
   }
-}
+};
 
-//Funzione per visualizzare la risposta giusta allo scadere del tempo
+//Funzione per visualizzare la risposta giusta allo scadere del tempo, non c'è score++ perché se non rispondi non fai punti, per questo colora soltanto la risposta verde se il tempo è scaduto senza aggiungere punti per renderResults
 function handleTimeUp() {
   const q = QUESTIONS[currentQuestion];
   const allBtns = document.querySelectorAll('.answer');
@@ -319,7 +319,7 @@ function handleTimeUp() {
   setTimeout(() => {
     advance();
   }, FEEDBACK_DELAY);
-}
+};
 
 //Funzione che stampa a schermo i risultati del test
 function renderResults() {
