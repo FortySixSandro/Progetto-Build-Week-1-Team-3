@@ -167,81 +167,100 @@ function renderWelcome() {
   container.appendChild(button);
   button.addEventListener('click', (e) => {
     // aggiorna lo stato
-    currentScreen = 'quiz'; 
+    currentScreen = 'quiz';
     //render per aggiornare la schermata
-    render(); 
+    render();
   });
 }
-render();
 
-  function renderQuiz() {
+window.onload = () => {
+  render();
+};
+
+function renderQuiz() {
+  //Pulizia
   container.textContent = '';
+  //span con contatore della domanda
+  const divHeader = document.createElement('div');
+  divHeader.classList.add('quizHeader');
 
+  const spanNum = document.createElement('span');
+  spanNum.classList.add('questNum');
+  spanNum.textContent = `Domanda ${currentQuestion + 1} di ${TOTAL_QUESTIONS}`;
+
+
+
+  //Creazione h2 titolo domanda
+  const q = QUESTIONS[currentQuestion];
+  const title = document.createElement('h2');
+  title.classList.add('title');
+  title.textContent = q.question;
+
+  //
   const divAnswer = document.createElement('div');
   divAnswer.classList.add('quizHeader');
+  divAnswer.appendChild(title);
+
   const buttonAnswer = document.createElement('button');
   buttonAnswer.classList.add('answer');
-  const q = QUESTIONS[currentQuestion];
+
   const allAnswers = [q.correct_answer, ...q.incorrect_answers];
   allAnswers.sort(() => Math.random() - 0.5);
+
   allAnswers.forEach(answer => {
     const btn = document.createElement('button');
     btn.className = 'answer';
     btn.textContent = answer;
-    //btn.addEventListener('click', () => handleAnswer(btn, answer, q.correct_answer));
     divAnswer.appendChild(btn);
   });
 
   divAnswer.addEventListener('click', (e) => {
     if (e.target.matches('.answer')) { // matches ce lo siamo cercati, controlla se l'evento ha un selettore css
-    handleAnswer(e.target, e.target.textContent, q.correct_answer);
+      handleAnswer(e.target, e.target.textContent, q.correct_answer);
     }
   });
 
+  divHeader.appendChild(spanNum);
+  container.appendChild(divHeader);
   container.appendChild(divAnswer);
+
 };
 
 // GESTIONE RISPOSTA
-  function handleAnswer(clickedBtn, answer, correctAnswer) {
+function handleAnswer(clickedBtn, answer, correctAnswer) {
   clearInterval(timerId); // Ferma il timer immediatamente
-  
+  setTimeout(() => {
+    advance();
+  }, 1300);
   const allBtns = document.querySelectorAll('.answer');
-  
-   // Disabilita tutti i bottoni per impedire altri click
+
+  // Disabilita tutti i bottoni per impedire altri click
   allBtns.forEach(btn => {
-  btn.disabled = true;
+    btn.disabled = true;
   });
 
   if (answer === correctAnswer) {
     clickedBtn.classList.add('true');
   } else {
     clickedBtn.classList.add('false');
-  allBtns.forEach(btn => {
-    if (btn.textContent === correctAnswer) {
-      btn.classList.add('true');
-    }
-  })}
+    allBtns.forEach(btn => {
+      if (btn.textContent === correctAnswer) {
+        btn.classList.add('true');
+      }
+    })
+  }
 }
 
-setTimeout(() => {
-    advance();
-  }, 2000);
+//
+function advance() {
+  currentQuestion++;
 
-
- // 6. AVANZAMENTO
- function advance() {
-   currentQuestion++;
-  
-   if (currentQuestion < TOTAL_QUESTIONS) {
-     renderQuiz();
-   } else {
-     // Quiz finito
-     screenQuiz.style.display = 'none';
-     alert('Quiz completato! Complimenti.');
-     window.location.reload();
-     setTimeout(() => {
-    advance();
-  }, 2000);
-   }}
+  if (currentQuestion < TOTAL_QUESTIONS) {
+    renderQuiz();
+  } else {
+    alert('Quiz completato! Complimenti.');
+    window.location.reload();
+  }
+}
 
 
