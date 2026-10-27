@@ -126,7 +126,6 @@ function render() {
 }
 
 
-
 // Funzione renderWelcome finita, da modificare e da aggiungere il click per iniziare
 function renderWelcome() {
   const divTitle = document.createElement('div');
@@ -161,52 +160,88 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
+
   const button = document.createElement('button');
   button.classList.add('button');
   button.textContent = 'Inizia';
-
   container.appendChild(button);
-
-  /* button.addEventListener('click', () => {
-    currentScreen = 'quiz';
-    render();
- });*/
-
+  button.addEventListener('click', (e) => {
+    // aggiorna lo stato
+    currentScreen = 'quiz'; 
+    //render per aggiornare la schermata
+    render(); 
+  });
 }
-//DA FINIRE
-function renderQuiz() {
+render();
+
+  function renderQuiz() {
   container.textContent = '';
 
-  const divTotalQuestion = document.createElement('div');
+  const divAnswer = document.createElement('div');
+  divAnswer.classList.add('quizHeader');
+  const buttonAnswer = document.createElement('button');
+  buttonAnswer.classList.add('answer');
+  const q = QUESTIONS[currentQuestion];
+  const allAnswers = [q.correct_answer, ...q.incorrect_answers];
+  allAnswers.sort(() => Math.random() - 0.5);
+  allAnswers.forEach(answer => {
+    const btn = document.createElement('button');
+    btn.className = 'answer';
+    btn.textContent = answer;
+    //btn.addEventListener('click', () => handleAnswer(btn, answer, q.correct_answer));
+    divAnswer.appendChild(btn);
+  });
 
+  divAnswer.addEventListener('click', (e) => {
+    if (e.target.matches('.answer')) { // matches ce lo siamo cercati, controlla se l'evento ha un selettore css
+    handleAnswer(e.target, e.target.textContent, q.correct_answer);
+    }
+  });
+
+  container.appendChild(divAnswer);
+};
+
+// GESTIONE RISPOSTA
+  function handleAnswer(clickedBtn, answer, correctAnswer) {
+  clearInterval(timerId); // Ferma il timer immediatamente
+  
+  const allBtns = document.querySelectorAll('.answer');
+  
+   // Disabilita tutti i bottoni per impedire altri click
+  allBtns.forEach(btn => {
+  btn.disabled = true;
+  });
+
+  if (answer === correctAnswer) {
+    clickedBtn.classList.add('true');
+  } else {
+    clickedBtn.classList.add('false');
+  allBtns.forEach(btn => {
+    if (btn.textContent === correctAnswer) {
+      btn.classList.add('true');
+    }
+  })}
 }
 
-//Funzione estrai della tombola da modificare e adattare al quiz
-
-/*function estrai() {
-    if (usciti.length >= 90) {
-        alert('Tutti i numeri sono stati estratti!');
-        return;
-    }
-
-    const disponibili = [];
-    for (let i = 1; i <= 90; i++) {
-        if (!usciti.includes(i)) {
-            disponibili.push(i);
-        }
-    }
-
-    const indice = Math.floor(Math.random() * disponibili.length);
-    const numeroEstratto = disponibili[indice];
-
-    usciti.push(numeroEstratto);
-
-    ultimoNumeroJs.textContent = numeroEstratto;
-
-    rendiCronologia();
-    rendiTabellone();
-}*/
+setTimeout(() => {
+    advance();
+  }, 2000);
 
 
+ // 6. AVANZAMENTO
+ function advance() {
+   currentQuestion++;
+  
+   if (currentQuestion < TOTAL_QUESTIONS) {
+     renderQuiz();
+   } else {
+     // Quiz finito
+     screenQuiz.style.display = 'none';
+     alert('Quiz completato! Complimenti.');
+     window.location.reload();
+     setTimeout(() => {
+    advance();
+  }, 2000);
+   }}
 
-//
+

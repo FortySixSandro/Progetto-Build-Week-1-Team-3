@@ -94,10 +94,49 @@ body {
   cursor: pointer;
 }
 
-.true {
-  background-color: green;
+.answer.true {
+  background-color: #10b981; /* Verde */
+  color: white;
+  border-color: #10b981;
 }
 
-.false {
-  background-color: red;
+.answer.false {
+  background-color: #ef4444; /* Rosso */
+  color: white;
+  border-color: #ef4444;
 }
+
+.quizHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: #1b1535;
+}
+
+/* ----------------------------*/ 
+
+
+/* TIMER 
+.timer-box {
+  padding: 0.4rem 0.8rem;
+  background-color: #fca5a5; /* Rosso chiaro 
+  color: #7f1d1d;  Rosso scuro 
+  border-radius: 8px;
+  font-weight: bold;
+} */
+
+/* RISPOSTE 
+#answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+/* CLASSI DI STATO RISPOSTA 
+.answer:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}*/
+
