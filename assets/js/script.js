@@ -244,6 +244,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
 
   if (answer === correctAnswer) {
     clickedBtn.classList.add('true');
+    score++;
   } else {
     clickedBtn.classList.add('false');
     allBtns.forEach(btn => {
@@ -254,15 +255,14 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
   }
 }
 
-
 function advance() {
   currentQuestion++;
 
   if (currentQuestion < TOTAL_QUESTIONS) {
     renderQuiz();
   } else {
-    alert('Quiz completato! Complimenti.');
-    window.location.reload();
+    currentScreen = 'results';
+    render();
   }
 }
 
@@ -293,8 +293,8 @@ function updateTimerDisplay() {
       display.style.backgroundColor = '#ef4444';
       display.style.color = '#ffffff';
     } else {
-      display.style.backgroundColor = '#fca5a5';
-      display.style.color = '#7f1d1d';
+      display.style.backgroundColor = '#0c113bf1';
+      display.style.color = '#fff';
     }
   }
 }
@@ -314,3 +314,17 @@ function handleTimeUp() {
     advance();
   }, FEEDBACK_DELAY);
 }
+
+function renderResults() {
+  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
+
+  const pScore = document.createElement('p');
+  pScore.textContent = `Hai risposto correttamente a ${score} domande su ${TOTAL_QUESTIONS}.`; 
+  pScore.classList.add('paragraph');
+  container.appendChild(pScore);
+
+  const pPercentage = document.createElement('p');
+  pPercentage.textContent = `Percentuale: ${percentage}%`;
+ 
+}
+
