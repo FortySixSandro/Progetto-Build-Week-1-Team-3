@@ -342,7 +342,7 @@ function renderResults() {
 
   resultsScore.textContent = `${percentage}%`;
 
-  resultsQuestions.textContent = `${score}/${TOTAL_QUESTIONS} domande`;
+  resultsQuestions.textContent = `${score}/${TOTAL_QUESTIONS} corrette`;
 
   resultsBar.style.background = `conic-gradient( #22C55E 0% ${percentage}%, #FF6467 ${percentage}% 100% )`;
 
