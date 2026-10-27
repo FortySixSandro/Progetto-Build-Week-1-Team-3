@@ -89,6 +89,7 @@ let currentScreen = "welcome"; // "welcome" | "quiz" | "results"
 let currentQuestion = 0;
 let score = 0;
 let timerId = null;
+let timeLeft = TIMER_DURATION;
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -107,8 +108,6 @@ const list = document.querySelector('#list');*/
 
 const container = document.querySelector('.container');
 const app = document.querySelector('#app');
-const totalQuestion = document.querySelector('totalQuestion');
-const questNum = document.querySelector('questNum');
 const countDown = document.querySelector('countDown');
 const containerDomande = document.querySelector('containerDomande');
 const answer = document.querySelector('.answer');
@@ -188,7 +187,10 @@ function renderQuiz() {
   spanNum.classList.add('questNum');
   spanNum.textContent = `Domanda ${currentQuestion + 1} di ${TOTAL_QUESTIONS}`;
 
-
+  const spanTimer = document.createElement('span');
+  spanTimer.classList.add('timerBox');
+  spanTimer.id = 'timerDisplay';
+  spanTimer.textContent = `${TIMER_DURATION}s`;
 
   //Creazione h2 titolo domanda
   const q = QUESTIONS[currentQuestion];
@@ -201,8 +203,6 @@ function renderQuiz() {
   divAnswer.classList.add('quizHeader');
   divAnswer.appendChild(title);
 
-  const buttonAnswer = document.createElement('button');
-  buttonAnswer.classList.add('answer');
 
   const allAnswers = [q.correct_answer, ...q.incorrect_answers];
   allAnswers.sort(() => Math.random() - 0.5);
@@ -220,20 +220,24 @@ function renderQuiz() {
     }
   });
 
+  divHeader.appendChild(spanTimer);
   divHeader.appendChild(spanNum);
   container.appendChild(divHeader);
   container.appendChild(divAnswer);
+
+  startTimer();
 
 };
 
 // GESTIONE RISPOSTA
 function handleAnswer(clickedBtn, answer, correctAnswer) {
-  clearInterval(timerId); // Ferma il timer immediatamente
+  clearInterval(timerId);
+
   setTimeout(() => {
     advance();
-  }, 1300);
-  const allBtns = document.querySelectorAll('.answer');
+  }, FEEDBACK_DELAY);
 
+  const allBtns = document.querySelectorAll('.answer');
   // Disabilita tutti i bottoni per impedire altri click
   allBtns.forEach(btn => {
     btn.disabled = true;
@@ -251,7 +255,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
   }
 }
 
-//
+
 function advance() {
   currentQuestion++;
 
@@ -263,4 +267,50 @@ function advance() {
   }
 }
 
+function startTimer() {
+  clearInterval(timerId);
 
+  timeLeft = TIMER_DURATION;
+  updateTimerDisplay();
+
+  timerId = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+
+    if (timeLeft <= 0) {
+      clearInterval(timerId);
+      handleTimeUp();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const display = document.querySelector('#timerDisplay');
+  if (display) {
+    display.textContent = `${timeLeft}s`;
+    // Colore urgente sotto i 5 secondi
+    if (timeLeft <= 5) {
+      display.style.backgroundColor = '#ef4444';
+      display.style.color = '#ffffff';
+    } else {
+      display.style.backgroundColor = '#fca5a5';
+      display.style.color = '#7f1d1d';
+    }
+  }
+}
+
+function handleTimeUp() {
+  const q = QUESTIONS[currentQuestion];
+  const allBtns = document.querySelectorAll('.answer');
+
+  allBtns.forEach(btn => {
+    btn.disabled = true;
+    if (btn.textContent === q.correct_answer) {
+      btn.classList.add('true');
+    }
+  });
+
+  setTimeout(() => {
+    advance();
+  }, FEEDBACK_DELAY);
+}

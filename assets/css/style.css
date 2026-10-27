@@ -114,6 +114,12 @@ body {
   color: #1b1535;
 }
 
+.timerBox{
+  padding: 6px;
+  border-radius: 6px;
+  float: right;
+}
+
 /* ----------------------------*/ 
 
 
