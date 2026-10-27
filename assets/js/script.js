@@ -103,11 +103,12 @@ let timeLeft = TIMER_DURATION;
 */
 
 const container = document.querySelector('.container');
-const app = document.querySelector('#app');
+const app = document.querySelector('#app'); //Non abbiamo utlizzato questo id ma un div con classe .container
 const countDown = document.querySelector('countDown');
 const containerDomande = document.querySelector('containerDomande');
 const answer = document.querySelector('.answer');
 
+//Funzione che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
 function render() {
   container.textContent = '';
 
@@ -120,8 +121,9 @@ function render() {
   }
 }
 
-// Funzione renderWelcome finita, da modificare e da aggiungere il click per iniziare
+// Funzione per stampare la schermata di avvio del quiz
 function renderWelcome() {
+  //Creo un div con un h1, gli assegno la classe .title, ci scrivo dentro e lo appendo a container
   const divTitle = document.createElement('div');
   const title = document.createElement('h1');
   divTitle.classList.add('title');
@@ -130,6 +132,7 @@ function renderWelcome() {
   container.appendChild(divTitle);
   divTitle.appendChild(title);
 
+  //Creo un div con un paragrafo, aggiungo la classe .paragraph al paragrafo, cambio il suo contenuto testuale e lo appendo a container
   const divParagraph = document.createElement('div');
   const paragraph = document.createElement('p');
   divParagraph.classList.add('paragraph');
@@ -138,6 +141,7 @@ function renderWelcome() {
   container.appendChild(divParagraph);
   divParagraph.appendChild(paragraph);
 
+  //Credo un div con una lista, aggiungo la classe .list al div e la appendo a container
   const divList = document.createElement('div');
   divList.classList.add('list');
   const ul = document.createElement('ul');
@@ -154,7 +158,7 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
-
+  //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza
   const button = document.createElement('button');
   button.classList.add('button');
   button.textContent = 'Inizia';
@@ -172,7 +176,7 @@ window.onload = () => {
 };
 
 function renderQuiz() {
-  //Pulizia
+  //Pulizia del contenuto precedente (renderWelcome o una domanda precedente)
   container.textContent = '';
   //span con contatore della domanda
   const divHeader = document.createElement('div');
@@ -193,15 +197,16 @@ function renderQuiz() {
   title.classList.add('title');
   title.textContent = q.question;
 
-  //
+  //Div delle risposte con i bottoni
   const divAnswer = document.createElement('div');
   divAnswer.classList.add('quizHeader');
   divAnswer.appendChild(title);
 
-
+  //Shuffle bottoni stampati delle domande
   const allAnswers = [q.correct_answer, ...q.incorrect_answers];
   allAnswers.sort(() => Math.random() - 0.5);
 
+  //Ciclo per creare bottoni risposta in base al numero delle risposte necessarie
   allAnswers.forEach(answer => {
     const btn = document.createElement('button');
     btn.className = 'answer';
@@ -209,6 +214,7 @@ function renderQuiz() {
     divAnswer.appendChild(btn);
   });
 
+  // Click delle risposte
   divAnswer.addEventListener('click', (e) => {
     if (e.target.matches('.answer')) { // matches ce lo siamo cercati, controlla se l'evento ha un selettore css
       handleAnswer(e.target, e.target.textContent, q.correct_answer);
@@ -251,6 +257,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
   }
 }
 
+//Funzione per andare avanti con le domande
 function advance() {
   currentQuestion++;
 
@@ -262,6 +269,7 @@ function advance() {
   }
 }
 
+//Funzione per far iniziare il timer
 function startTimer() {
   clearInterval(timerId);
 
@@ -279,6 +287,7 @@ function startTimer() {
   }, 1000);
 }
 
+//Funzione per far cambiare il colore al timer quando arriva a 5 secondi
 function updateTimerDisplay() {
   const display = document.querySelector('#timerDisplay');
   if (display) {
@@ -295,6 +304,7 @@ function updateTimerDisplay() {
   }
 }
 
+//Funzione per visualizzare la risposta giusta allo scadere del tempo
 function handleTimeUp() {
   const q = QUESTIONS[currentQuestion];
   const allBtns = document.querySelectorAll('.answer');
@@ -311,23 +321,24 @@ function handleTimeUp() {
   }, FEEDBACK_DELAY);
 }
 
-
+//Funzione che stampa a schermo i risultati del test
 function renderResults() {
+  //Creazione di div che sono stilizzati in CSS con classe resultsBar (le barre colorate esterne al cerchio), resultsBarFill (un cerchio bianco interno per dare l'effetto del grafico Epicode) e resultsInfo (Le scritte all'interno del cerchio resultBarFill)
   const resultsBar = document.createElement('div');
-  resultsBar.classList.add('results-bar');
+  resultsBar.classList.add('resultsBar');
 
   const resultsBarFill = document.createElement('div');
-  resultsBarFill.classList.add('results-bar-fill');
+  resultsBarFill.classList.add('resultsBarFill');
 
   const resultsTitle = document.createElement('p');
-  resultsTitle.classList.add('results-info');
+  resultsTitle.classList.add('resultsInfo');
 
   const resultsScore = document.createElement('p');
-  resultsScore.classList.add('results-info');
+  resultsScore.classList.add('resultsInfo');
 
   const resultsQuestions = document.createElement('p');
-  resultsQuestions.classList.add('results-info');
-
+  resultsQuestions.classList.add('resultsInfo');
+  //Percentuale di risposte corrette con if per la visualizzazione, se sopra 60% promosso, se sotto bocciato
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
 
   if (percentage >= PASS_THRESHOLD) {
