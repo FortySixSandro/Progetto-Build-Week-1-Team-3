@@ -315,16 +315,41 @@ function handleTimeUp() {
   }, FEEDBACK_DELAY);
 }
 
+
 function renderResults() {
+  const resultsBar = document.createElement('div');
+  resultsBar.classList.add('results-bar');
+
+  const resultsBarFill = document.createElement('div');
+  resultsBarFill.classList.add('results-bar-fill');
+
+  const resultsTitle = document.createElement('p');
+  resultsTitle.classList.add('results-info');
+
+  const resultsScore = document.createElement('p');
+  resultsScore.classList.add('results-info');
+
+  const resultsQuestions = document.createElement('p');
+  resultsQuestions.classList.add('results-info');
+
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
 
-  const pScore = document.createElement('p');
-  pScore.textContent = `Hai risposto correttamente a ${score} domande su ${TOTAL_QUESTIONS}.`; 
-  pScore.classList.add('paragraph');
-  container.appendChild(pScore);
+  if (percentage >= PASS_THRESHOLD) {
+    resultsTitle.textContent = 'Sei stato PROMOSSO!';
+  } else {
+    resultsTitle.textContent = 'Sei stato BOCCIATO...';
+  }
 
-  const pPercentage = document.createElement('p');
-  pPercentage.textContent = `Percentuale: ${percentage}%`;
- 
+  resultsScore.textContent = `${percentage}%`;
+
+  resultsQuestions.textContent = `${score}/${TOTAL_QUESTIONS} domande`;
+
+  resultsBar.style.background = `conic-gradient( #22C55E 0% ${percentage}%, #FF6467 ${percentage}% 100% )`;
+
+  resultsBarFill.appendChild(resultsTitle);
+  resultsBarFill.appendChild(resultsScore);
+  resultsBarFill.appendChild(resultsQuestions);
+  resultsBar.appendChild(resultsBarFill);
+  container.appendChild(resultsBar);
+
 }
-

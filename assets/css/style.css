@@ -119,29 +119,35 @@ body {
   float: right;
 }
 
-/* ----------------------------*/ 
-
-
-/* TIMER 
-.timer-box {
-  padding: 0.4rem 0.8rem;
-  background-color: #fca5a5; /* Rosso chiaro 
-  color: #7f1d1d;  Rosso scuro 
-  border-radius: 8px;
-  font-weight: bold;
-} */
-
-/* RISPOSTE 
-#answers-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 1.5rem;
+.results-bar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin: 100px auto;
+  position: relative;
+  padding: 10px;
 }
 
-/* CLASSI DI STATO RISPOSTA 
-.answer:disabled {
-  cursor: not-allowed;
-  opacity: 0.8;
-}*/
+.results-bar-fill {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  padding: 10px;
+}
+
+.results-info {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  color: #0C113B;
+}
 
