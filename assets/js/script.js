@@ -336,8 +336,10 @@ function renderResults() {
 
   if (percentage >= PASS_THRESHOLD) {
     resultsTitle.textContent = 'Sei stato PROMOSSO!';
+    resultsTitle.classList.add('promosso');
   } else {
     resultsTitle.textContent = 'Sei stato BOCCIATO...';
+    resultsTitle.classList.add('bocciato');
   }
 
   resultsScore.textContent = `${percentage}%`;
@@ -351,5 +353,5 @@ function renderResults() {
   resultsBarFill.appendChild(resultsQuestions);
   resultsBar.appendChild(resultsBarFill);
   container.appendChild(resultsBar);
-
 }
+

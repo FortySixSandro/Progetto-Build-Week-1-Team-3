@@ -95,13 +95,13 @@ body {
 }
 
 .answer.true {
-  background-color: #10b981; /* Verde */
+  background-color: #10b981;
   color: white;
   border-color: #10b981;
 }
 
 .answer.false {
-  background-color: #ef4444; /* Rosso */
+  background-color: #ef4444;
   color: white;
   border-color: #ef4444;
 }
@@ -113,7 +113,7 @@ body {
   color: #1b1535;
 }
 
-.timerBox{
+.timerBox {
   padding: 6px;
   border-radius: 6px;
   float: right;
@@ -151,3 +151,10 @@ body {
   color: #0C113B;
 }
 
+.promosso {
+  color: #22C55E;
+}
+
+.bocciato {
+  color: #FF6467;
+}
