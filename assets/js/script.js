@@ -160,7 +160,7 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
-  //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza
+  //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza, fa uno shuffle dell'array delle domande in modo che siano sempre in ordine casuale
   const button = document.createElement("button");
   button.classList.add("button");
   button.textContent = "Inizia";
@@ -402,7 +402,6 @@ function renderResults() {
     shuffledQuestions = [];
     render();
   });
-
 
   divContainerAnswers.appendChild(divCorrectAnswerNumber);
   divContainerAnswers.appendChild(divWrongAnswerNumber);
