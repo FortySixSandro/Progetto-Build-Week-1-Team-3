@@ -90,6 +90,7 @@ let currentQuestion = 0;
 let score = 0;
 let timerId = null;
 let timeLeft = TIMER_DURATION;
+let shuffledQuestions = [];
 
 /* SCRIVI QUI LE TUE FUNZIONI:
    - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
@@ -164,7 +165,9 @@ function renderWelcome() {
   button.classList.add("button");
   button.textContent = "Inizia";
   container.appendChild(button);
-  button.addEventListener("click", (e) => {
+  button.addEventListener("click", () => {
+    shuffledQuestions = [...QUESTIONS];
+    shuffledQuestions.sort(() => Math.random() - 0.5);
     // aggiorna lo stato
     currentScreen = "quiz";
     //render per aggiornare la schermata
@@ -193,7 +196,7 @@ function renderQuiz() {
   spanTimer.textContent = `${TIMER_DURATION}s`;
 
   //Creazione h2 titolo domanda
-  const q = QUESTIONS[currentQuestion];
+  const q = shuffledQuestions[currentQuestion];
   const title = document.createElement("h2");
   title.classList.add("title");
   title.textContent = q.question;
@@ -307,7 +310,7 @@ function updateTimerDisplay() {
 
 //Funzione per visualizzare la risposta giusta allo scadere del tempo, non c'è score++ perché se non rispondi non fai punti, per questo colora soltanto la risposta verde se il tempo è scaduto senza aggiungere punti per renderResults
 function handleTimeUp() {
-  const q = QUESTIONS[currentQuestion];
+  const q = shuffledQuestions[currentQuestion];
   const allBtns = document.querySelectorAll(".answer");
 
   allBtns.forEach((btn) => {
@@ -389,6 +392,17 @@ function renderResults() {
   const buttonRestart = document.createElement("button");
   buttonRestart.classList.add("buttonRestart");
   buttonRestart.textContent = "Ricomincia";
+
+  buttonRestart.addEventListener("click", () => {
+    currentScreen = "welcome";
+    currentQuestion = 0;
+    score = 0;
+    clearInterval(timerId);
+    timeLeft = TIMER_DURATION;
+    shuffledQuestions = [];
+    render();
+  });
+
 
   divContainerAnswers.appendChild(divCorrectAnswerNumber);
   divContainerAnswers.appendChild(divWrongAnswerNumber);
