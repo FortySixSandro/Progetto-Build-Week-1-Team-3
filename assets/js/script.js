@@ -80,9 +80,9 @@ const QUESTIONS = [
 
 /* Costanti del quiz */
 const TOTAL_QUESTIONS = QUESTIONS.length;
-const PASS_THRESHOLD = 60;     // percentuale minima per "Promosso"
-const FEEDBACK_DELAY = 1000;   // ms di attesa dopo risposta prima di avanzare
-const TIMER_DURATION = 20;     // secondi per ogni domanda
+const PASS_THRESHOLD = 60; // percentuale minima per "Promosso"
+const FEEDBACK_DELAY = 1000; // ms di attesa dopo risposta prima di avanzare
+const TIMER_DURATION = 20; // secondi per ogni domanda
 
 /* Stato globale */
 let currentScreen = "welcome"; // "welcome" | "quiz" | "results"
@@ -102,21 +102,21 @@ let timeLeft = TIMER_DURATION;
    - advance() per andare alla domanda successiva o ai risultati
 */
 
-const container = document.querySelector('.container');
-const app = document.querySelector('#app'); //Non abbiamo utlizzato questo id ma un div con classe .container
-const countDown = document.querySelector('countDown');
-const containerDomande = document.querySelector('containerDomande');
-const answer = document.querySelector('.answer');
+const container = document.querySelector(".container");
+const app = document.querySelector("#app"); //Non abbiamo utlizzato questo id ma un div con classe .container
+const countDown = document.querySelector("countDown");
+const containerDomande = document.querySelector("containerDomande");
+const answer = document.querySelector(".answer");
 
 //Funzione che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
 function render() {
-  container.textContent = '';
+  container.textContent = "";
 
-  if (currentScreen === 'welcome') {
+  if (currentScreen === "welcome") {
     renderWelcome();
-  } else if (currentScreen === 'quiz') {
+  } else if (currentScreen === "quiz") {
     renderQuiz();
-  } else if (currentScreen === 'results') {
+  } else if (currentScreen === "results") {
     renderResults();
   }
 }
@@ -124,33 +124,34 @@ function render() {
 // Funzione per stampare la schermata di avvio del quiz
 function renderWelcome() {
   //Creo un div con un h1, gli assegno la classe .title, ci scrivo dentro e lo appendo a container
-  const divTitle = document.createElement('div');
-  const title = document.createElement('h1');
-  divTitle.classList.add('title');
-  title.textContent = 'Benvenuto al tuo esame';
+  const divTitle = document.createElement("div");
+  const title = document.createElement("h1");
+  divTitle.classList.add("title");
+  title.textContent = "Benvenuto al tuo esame";
 
   container.appendChild(divTitle);
   divTitle.appendChild(title);
 
   //Creo un div con un paragrafo, aggiungo la classe .paragraph al paragrafo, cambio il suo contenuto testuale e lo appendo a container
-  const divParagraph = document.createElement('div');
-  const paragraph = document.createElement('p');
-  divParagraph.classList.add('paragraph');
-  paragraph.textContent = 'Una serie di 10 domande sul mondo dell\'informativa e del web. Per ogni domanda hai 20 secondi di tempo.';
+  const divParagraph = document.createElement("div");
+  const paragraph = document.createElement("p");
+  divParagraph.classList.add("paragraph");
+  paragraph.textContent =
+    "Una serie di 10 domande sul mondo dell'informativa e del web. Per ogni domanda hai 20 secondi di tempo.";
 
   container.appendChild(divParagraph);
   divParagraph.appendChild(paragraph);
 
   //Credo un div con una lista, aggiungo la classe .list al div e la appendo a container
-  const divList = document.createElement('div');
-  divList.classList.add('list');
-  const ul = document.createElement('ul');
-  const li1 = document.createElement('li');
-  li1.textContent = 'Ogni domanda è a tempo e può ricevere una sola risposta.';
-  const li2 = document.createElement('li');
-  li2.textContent = 'Una volta cliccata una risposta, la domanda è chiusa.';
-  const li3 = document.createElement('li');
-  li3.textContent = 'Il quiz dura circa 3 minuti.';
+  const divList = document.createElement("div");
+  divList.classList.add("list");
+  const ul = document.createElement("ul");
+  const li1 = document.createElement("li");
+  li1.textContent = "Ogni domanda è a tempo e può ricevere una sola risposta.";
+  const li2 = document.createElement("li");
+  li2.textContent = "Una volta cliccata una risposta, la domanda è chiusa.";
+  const li3 = document.createElement("li");
+  li3.textContent = "Il quiz dura circa 3 minuti.";
 
   container.appendChild(divList);
   divList.appendChild(ul);
@@ -159,13 +160,13 @@ function renderWelcome() {
   ul.appendChild(li3);
 
   //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza
-  const button = document.createElement('button');
-  button.classList.add('button');
-  button.textContent = 'Inizia';
+  const button = document.createElement("button");
+  button.classList.add("button");
+  button.textContent = "Inizia";
   container.appendChild(button);
-  button.addEventListener('click', (e) => {
+  button.addEventListener("click", (e) => {
     // aggiorna lo stato
-    currentScreen = 'quiz';
+    currentScreen = "quiz";
     //render per aggiornare la schermata
     render();
   });
@@ -177,29 +178,29 @@ window.onload = () => {
 
 function renderQuiz() {
   //Pulizia del contenuto precedente (renderWelcome o una domanda precedente)
-  container.textContent = '';
+  container.textContent = "";
   //span con contatore della domanda
-  const divHeader = document.createElement('div');
-  divHeader.classList.add('quizHeader');
+  const divHeader = document.createElement("div");
+  divHeader.classList.add("quizHeader");
 
-  const spanNum = document.createElement('span');
-  spanNum.classList.add('questNum');
+  const spanNum = document.createElement("span");
+  spanNum.classList.add("questNum");
   spanNum.textContent = `Domanda ${currentQuestion + 1} di ${TOTAL_QUESTIONS}`;
 
-  const spanTimer = document.createElement('span');
-  spanTimer.classList.add('timerBox');
-  spanTimer.id = 'timerDisplay';
+  const spanTimer = document.createElement("span");
+  spanTimer.classList.add("timerBox");
+  spanTimer.id = "timerDisplay";
   spanTimer.textContent = `${TIMER_DURATION}s`;
 
   //Creazione h2 titolo domanda
   const q = QUESTIONS[currentQuestion];
-  const title = document.createElement('h2');
-  title.classList.add('title');
+  const title = document.createElement("h2");
+  title.classList.add("title");
   title.textContent = q.question;
 
   //Div delle risposte con i bottoni
-  const divAnswer = document.createElement('div');
-  divAnswer.classList.add('quizHeader');
+  const divAnswer = document.createElement("div");
+  divAnswer.classList.add("quizHeader");
   divAnswer.appendChild(title);
 
   //Shuffle bottoni stampati delle domande
@@ -207,16 +208,17 @@ function renderQuiz() {
   allAnswers.sort(() => Math.random() - 0.5);
 
   //Ciclo per creare bottoni risposta in base al numero delle risposte necessarie
-  allAnswers.forEach(answer => {
-    const btn = document.createElement('button');
-    btn.className = 'answer';
+  allAnswers.forEach((answer) => {
+    const btn = document.createElement("button");
+    btn.className = "answer";
     btn.textContent = answer;
     divAnswer.appendChild(btn);
   });
 
   // Click delle risposte
-  divAnswer.addEventListener('click', (e) => {
-    if (e.target.matches('.answer')) { // matches ce lo siamo cercati, controlla se l'evento ha un selettore css
+  divAnswer.addEventListener("click", (e) => {
+    if (e.target.matches(".answer")) {
+      // matches ce lo siamo cercati, controlla se l'evento ha un selettore css
       handleAnswer(e.target, e.target.textContent, q.correct_answer);
     }
   });
@@ -227,8 +229,7 @@ function renderQuiz() {
   container.appendChild(divAnswer);
 
   startTimer();
-
-};
+}
 
 // GESTIONE RISPOSTA
 function handleAnswer(clickedBtn, answer, correctAnswer) {
@@ -238,24 +239,24 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
     advance();
   }, FEEDBACK_DELAY);
 
-  const allBtns = document.querySelectorAll('.answer');
+  const allBtns = document.querySelectorAll(".answer");
   // Disabilita tutti i bottoni per impedire altri click
-  allBtns.forEach(btn => {
+  allBtns.forEach((btn) => {
     btn.disabled = true;
   });
-// Se la risposta è corretta prende la classe true, che lo colora di verde, se è errata aggiunge la classe false alla risposta errata e la risposta giusta incrementa lo score.
+  // Se la risposta è corretta prende la classe true, che lo colora di verde, se è errata aggiunge la classe false alla risposta errata e la risposta giusta incrementa lo score.
   if (answer === correctAnswer) {
-    clickedBtn.classList.add('true');
+    clickedBtn.classList.add("true");
     score++;
   } else {
-    clickedBtn.classList.add('false');
-    allBtns.forEach(btn => {
+    clickedBtn.classList.add("false");
+    allBtns.forEach((btn) => {
       if (btn.textContent === correctAnswer) {
-        btn.classList.add('true');
+        btn.classList.add("true");
       }
-    })
+    });
   }
-};
+}
 
 //Funzione per andare avanti con le domande
 function advance() {
@@ -264,14 +265,14 @@ function advance() {
   if (currentQuestion < TOTAL_QUESTIONS) {
     renderQuiz();
   } else {
-    currentScreen = 'results';
+    currentScreen = "results";
     render();
   }
-};
+}
 
 //Funzione per far iniziare il timer
 function startTimer() {
-  clearInterval(timerId); 
+  clearInterval(timerId);
 
   timeLeft = TIMER_DURATION;
   updateTimerDisplay();
@@ -285,80 +286,127 @@ function startTimer() {
       handleTimeUp();
     }
   }, 1000);
-};
+}
 
 //Funzione per far cambiare il colore al timer quando arriva a 5 secondi
 function updateTimerDisplay() {
-  const display = document.querySelector('#timerDisplay');
+  const display = document.querySelector("#timerDisplay");
   if (display) {
     //Numero che diminiusce
     display.textContent = `${timeLeft}s`;
     // Colore urgente sotto i 5 secondi
     if (timeLeft <= 5) {
-      display.style.backgroundColor = '#ef4444';
-      display.style.color = '#ffffff';
+      display.style.backgroundColor = "#ef4444";
+      display.style.color = "#ffffff";
     } else {
-      display.style.backgroundColor = '#0c113bf1';
-      display.style.color = '#fff';
+      display.style.backgroundColor = "#0c113bf1";
+      display.style.color = "#fff";
     }
   }
-};
+}
 
 //Funzione per visualizzare la risposta giusta allo scadere del tempo, non c'è score++ perché se non rispondi non fai punti, per questo colora soltanto la risposta verde se il tempo è scaduto senza aggiungere punti per renderResults
 function handleTimeUp() {
   const q = QUESTIONS[currentQuestion];
-  const allBtns = document.querySelectorAll('.answer');
+  const allBtns = document.querySelectorAll(".answer");
 
-  allBtns.forEach(btn => {
+  allBtns.forEach((btn) => {
     btn.disabled = true;
     if (btn.textContent === q.correct_answer) {
-      btn.classList.add('true');
+      btn.classList.add("true");
     }
   });
 
   setTimeout(() => {
     advance();
   }, FEEDBACK_DELAY);
-};
+}
 
 //Funzione che stampa a schermo i risultati del test
 function renderResults() {
   //Creazione di div che sono stilizzati in CSS con classe resultsBar (le barre colorate esterne al cerchio), resultsBarFill (un cerchio bianco interno per dare l'effetto del grafico Epicode) e resultsInfo (Le scritte all'interno del cerchio resultBarFill)
-  const resultsBar = document.createElement('div');
-  resultsBar.classList.add('resultsBar');
 
-  const resultsBarFill = document.createElement('div');
-  resultsBarFill.classList.add('resultsBarFill');
+  const titleResult = document.createElement("h1");
+  titleResult.textContent = "Risultati";
+  titleResult.classList.add("title");
 
-  const resultsTitle = document.createElement('p');
-  resultsTitle.classList.add('resultsInfo');
+  const paragraphResult = document.createElement("p");
+  paragraphResult.textContent = "Hai completato il quiz!";
+  paragraphResult.classList.add("paragraphResult");
 
-  const resultsScore = document.createElement('p');
-  resultsScore.classList.add('resultsInfo');
+  const resultsBar = document.createElement("div");
+  resultsBar.classList.add("resultsBar");
 
-  const resultsQuestions = document.createElement('p');
-  resultsQuestions.classList.add('resultsInfo');
+  const resultsBarFill = document.createElement("div");
+  resultsBarFill.classList.add("resultsBarFill");
+
+  const resultsScore = document.createElement("p");
+  resultsScore.classList.add("resultsScore");
+
   //Percentuale di risposte corrette con if per la visualizzazione, se sopra 60% promosso, se sotto bocciato
   const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
 
+  const textResults = document.createElement("p");
+  textResults.classList.add("textResults");
+
   if (percentage >= PASS_THRESHOLD) {
-    resultsTitle.textContent = 'Sei stato PROMOSSO!';
-    resultsTitle.classList.add('promosso');
+    resultsScore.classList.add("percentPromosso");
+    textResults.classList.add("corrette");
+    textResults.textContent = "Promosso";
   } else {
-    resultsTitle.textContent = 'Sei stato BOCCIATO...';
-    resultsTitle.classList.add('bocciato');
+    resultsScore.classList.add("percentBocciato");
+    textResults.classList.add("errate");
+    textResults.textContent = "Bocciato";
   }
 
   resultsScore.textContent = `${percentage}%`;
 
-  resultsQuestions.textContent = `${score}/${TOTAL_QUESTIONS} corrette`;
-
   resultsBar.style.background = `conic-gradient( #22C55E 0% ${percentage}%, #FF6467 ${percentage}% 100% )`;
 
-  resultsBarFill.appendChild(resultsTitle);
   resultsBarFill.appendChild(resultsScore);
-  resultsBarFill.appendChild(resultsQuestions);
   resultsBar.appendChild(resultsBarFill);
-  container.appendChild(resultsBar);
-}
 
+  const divContainerAnswers = document.createElement("div");
+  divContainerAnswers.classList.add("resultsDivsContainer");
+
+  const divCorrectAnswerNumber = document.createElement("div");
+  const divWrongAnswerNumber = document.createElement("div");
+  divCorrectAnswerNumber.classList.add("resultsDivs");
+  divWrongAnswerNumber.classList.add("resultsDivs");
+
+  const correctAnswerNumber = document.createElement("p");
+  correctAnswerNumber.classList.add("resultsNumber");
+  correctAnswerNumber.classList.add("corrette");
+  const wrongAnswerNumber = document.createElement("p");
+  wrongAnswerNumber.classList.add("resultsNumber");
+  wrongAnswerNumber.classList.add("errate");
+
+  const correctAnswerText = document.createElement("p");
+  correctAnswerText.classList.add("resultsInfo");
+  const wrongAnswerText = document.createElement("p");
+  wrongAnswerText.classList.add("resultsInfo");
+
+  const buttonRestart = document.createElement("button");
+  buttonRestart.classList.add("buttonRestart");
+  buttonRestart.textContent = "Ricomincia";
+
+  divContainerAnswers.appendChild(divCorrectAnswerNumber);
+  divContainerAnswers.appendChild(divWrongAnswerNumber);
+  divCorrectAnswerNumber.appendChild(correctAnswerNumber);
+  divCorrectAnswerNumber.appendChild(correctAnswerText);
+  divWrongAnswerNumber.appendChild(wrongAnswerNumber);
+  divWrongAnswerNumber.appendChild(wrongAnswerText);
+
+  correctAnswerNumber.textContent = `${score}/10`;
+  correctAnswerText.textContent = "Risposte corrette";
+
+  wrongAnswerNumber.textContent = `${TOTAL_QUESTIONS - score}/10`;
+  wrongAnswerText.textContent = "Risposte errate";
+
+  container.appendChild(titleResult);
+  container.appendChild(paragraphResult);
+  container.appendChild(resultsBar);
+  container.appendChild(textResults);
+  container.appendChild(divContainerAnswers);
+  container.appendChild(buttonRestart);
+}
