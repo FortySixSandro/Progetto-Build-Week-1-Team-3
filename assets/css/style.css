@@ -137,6 +137,8 @@ body {
   margin: 50px auto;
   position: relative;
   padding: 10px;
+  background: conic-gradient(#22C55E calc(var(--fill) * 1%), #FF6467 0);
+  transition: --fill 1.2s cubic-bezier(.215, .61, .355, 1);
 }
 
 .resultsBarFill {
@@ -153,6 +155,7 @@ body {
   align-content: center;
   text-align: center;
   padding: 10px;
+
 }
 
 .resultsScore {
@@ -234,4 +237,10 @@ body {
   border-radius: 8px;
   font-size: 22px;
   font-weight: bold;
+}
+
+@property --fill {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
 }

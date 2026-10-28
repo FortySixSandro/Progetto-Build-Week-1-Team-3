@@ -364,7 +364,9 @@ function renderResults() {
 
   resultsScore.textContent = `${percentage}%`;
 
-  resultsBar.style.background = `conic-gradient( #22C55E 0% ${percentage}%, #FF6467 ${percentage}% 100% )`;
+  setTimeout(() => {
+    resultsBar.style.setProperty("--fill", percentage);
+  }, 100);
 
   resultsBarFill.appendChild(resultsScore);
   resultsBar.appendChild(resultsBarFill);
