@@ -104,10 +104,6 @@ let shuffledQuestions = [];
 */
 
 const container = document.querySelector(".container");
-const app = document.querySelector("#app"); //Non abbiamo utlizzato questo id ma un div con classe .container
-const countDown = document.querySelector("countDown");
-const containerDomande = document.querySelector("containerDomande");
-const answer = document.querySelector(".answer");
 
 //Funzione che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
 function render() {
@@ -160,20 +156,36 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
+
   //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza, fa uno shuffle dell'array delle domande in modo che siano sempre in ordine casuale
   const button = document.createElement("button");
   button.classList.add("button");
   button.textContent = "Inizia";
+  //button.disabled = true;
   container.appendChild(button);
+
+  /*
+//checkbox 
+  const labelConditions = document.createElement("label");
+  labelConditions.classList.add("labelConditions");
+  labelConditions.textContent("Prometto...")
+  const checkboxConditions = document.createElement("input");
+  checkboxConditions.type = "checkbox";
+  checkboxConditions.classList.add("conditions");
+
+  container.appendChild(labelConditions)
+  labelConditions.appendChild(checkboxConditions);
+  */
+
   button.addEventListener("click", () => {
     shuffledQuestions = [...QUESTIONS];
     shuffledQuestions.sort(() => Math.random() - 0.5);
     // aggiorna lo stato
     currentScreen = "quiz";
     //render per aggiornare la schermata
-    render();
+    render()
   });
-}
+};
 
 window.onload = () => {
   render();
@@ -193,8 +205,7 @@ function renderQuiz() {
   const spanTimer = document.createElement("span");
   spanTimer.classList.add("timerBox");
   spanTimer.id = "timerDisplay";
-  spanTimer.textContent = `${TIMER_DURATION}s`;
-
+  
   //Creazione h2 titolo domanda
   const q = shuffledQuestions[currentQuestion];
   const title = document.createElement("h2");
@@ -337,40 +348,6 @@ function renderResults() {
   paragraphResult.textContent = "Hai completato il quiz!";
   paragraphResult.classList.add("paragraphResult");
 
-  const resultsBar = document.createElement("div");
-  resultsBar.classList.add("resultsBar");
-
-  const resultsBarFill = document.createElement("div");
-  resultsBarFill.classList.add("resultsBarFill");
-
-  const resultsScore = document.createElement("p");
-  resultsScore.classList.add("resultsScore");
-
-  //Percentuale di risposte corrette con if per la visualizzazione, se sopra 60% promosso, se sotto bocciato
-  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
-
-  const textResults = document.createElement("p");
-  textResults.classList.add("textResults");
-
-  if (percentage >= PASS_THRESHOLD) {
-    resultsScore.classList.add("percentPromosso");
-    textResults.classList.add("corrette");
-    textResults.textContent = "Promosso";
-  } else {
-    resultsScore.classList.add("percentBocciato");
-    textResults.classList.add("errate");
-    textResults.textContent = "Bocciato";
-  }
-
-  resultsScore.textContent = `${percentage}%`;
-
-  setTimeout(() => {
-    resultsBar.style.setProperty("--fill", percentage);
-  }, 100);
-
-  resultsBarFill.appendChild(resultsScore);
-  resultsBar.appendChild(resultsBarFill);
-
   const divContainerAnswers = document.createElement("div");
   divContainerAnswers.classList.add("resultsDivsContainer");
 
@@ -405,6 +382,12 @@ function renderResults() {
     render();
   });
 
+  correctAnswerNumber.textContent = `${score}/10`;
+  correctAnswerText.textContent = "Risposte corrette";
+
+  wrongAnswerNumber.textContent = `${TOTAL_QUESTIONS - score}/10`;
+  wrongAnswerText.textContent = "Risposte errate";
+
   divContainerAnswers.appendChild(divCorrectAnswerNumber);
   divContainerAnswers.appendChild(divWrongAnswerNumber);
   divCorrectAnswerNumber.appendChild(correctAnswerNumber);
@@ -412,11 +395,63 @@ function renderResults() {
   divWrongAnswerNumber.appendChild(wrongAnswerNumber);
   divWrongAnswerNumber.appendChild(wrongAnswerText);
 
-  correctAnswerNumber.textContent = `${score}/10`;
-  correctAnswerText.textContent = "Risposte corrette";
 
-  wrongAnswerNumber.textContent = `${TOTAL_QUESTIONS - score}/10`;
-  wrongAnswerText.textContent = "Risposte errate";
+  const resultsBar = document.createElement("div");
+  resultsBar.classList.add("resultsBar");
+
+  const resultsBarFill = document.createElement("div");
+  resultsBarFill.classList.add("resultsBarFill");
+
+  const resultsScore = document.createElement("p");
+  resultsScore.classList.add("resultsScore");
+
+  //Percentuale di risposte corrette con if per la visualizzazione, se sopra 60% promosso, se sotto bocciato
+  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
+
+  const textResults = document.createElement("p");
+  textResults.classList.add("textResults");
+
+  if (percentage >= PASS_THRESHOLD) {
+    textResults.classList.add("corrette");
+    textResults.textContent = "Promosso";
+  } else {
+    textResults.classList.add("errate");
+    textResults.textContent = "Bocciato";
+  }
+
+  resultsScore.textContent = `0%`;
+
+  let currentScore = 0;
+  const durata = 1200;
+  const step = 100;
+  const intervallo = durata / step;
+  const incremento = percentage / step;
+
+  setTimeout(() => {
+    const contIntervallo = setInterval(() => {
+      currentScore += incremento;
+      let scoreFinale = Math.round(currentScore);
+
+      if (scoreFinale >= percentage) {
+        scoreFinale = percentage;
+        clearInterval(contIntervallo);
+      }
+
+      if (scoreFinale >= PASS_THRESHOLD) {
+        resultsScore.classList.remove("percentBocciato");
+        resultsScore.classList.add("percentPromosso");
+      } else {
+        resultsScore.classList.remove("percentPromosso");
+        resultsScore.classList.add("percentBocciato");
+      }
+
+      resultsScore.textContent = `${scoreFinale}%`;
+      resultsBar.style.background = `conic-gradient( #22C55E 0% ${scoreFinale}%, #FF6467 ${scoreFinale}% 100% )`;
+    }, intervallo);
+  }, 25);
+
+  resultsBarFill.appendChild(resultsScore);
+  resultsBar.appendChild(resultsBarFill);
 
   container.appendChild(titleResult);
   container.appendChild(paragraphResult);
