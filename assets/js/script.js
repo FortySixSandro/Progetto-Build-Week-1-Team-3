@@ -161,22 +161,31 @@ function renderWelcome() {
   const button = document.createElement("button");
   button.classList.add("button");
   button.textContent = "Inizia";
-  //button.disabled = true;
-  container.appendChild(button);
+  button.disabled = true;
 
-  /*
-//checkbox 
+
+  //checkbox 
   const labelConditions = document.createElement("label");
   labelConditions.classList.add("labelConditions");
-  labelConditions.textContent("Prometto...")
+
   const checkboxConditions = document.createElement("input");
   checkboxConditions.type = "checkbox";
   checkboxConditions.classList.add("conditions");
 
-  container.appendChild(labelConditions)
   labelConditions.appendChild(checkboxConditions);
-  */
+  labelConditions.textContent = "Prometto di rispondere da solo e senza l'aiuto di nessuno";
 
+  //spunta bottone attivo
+  checkboxConditions.addEventListener("change", () => {
+    if (checkboxConditions.checked) {
+      button.disabled = false;
+      button.classList.add("buttonDisabled");
+    } else {
+      button.disabled = true;
+    }
+  });
+
+  // aggiunto evento
   button.addEventListener("click", () => {
     shuffledQuestions = [...QUESTIONS];
     shuffledQuestions.sort(() => Math.random() - 0.5);
@@ -185,6 +194,13 @@ function renderWelcome() {
     //render per aggiornare la schermata
     render()
   });
+
+  container.appendChild(labelConditions)
+  labelConditions.appendChild(checkboxConditions);
+  container.appendChild(button);
+
+  container.appendChild(labelConditions);
+  container.appendChild(button);
 };
 
 window.onload = () => {
@@ -202,10 +218,19 @@ function renderQuiz() {
   spanNum.classList.add("questNum");
   spanNum.textContent = `Domanda ${currentQuestion + 1} di ${TOTAL_QUESTIONS}`;
 
-  const spanTimer = document.createElement("span");
+  const spanTimer = document.createElement("div");
   spanTimer.classList.add("timerBox");
   spanTimer.id = "timerDisplay";
-  
+
+  const hourglassIcon = document.createElement("span");
+  hourglassIcon.id = "hourglassIcon";
+
+  const timerText = document.createElement("span");
+  timerText.id = "timerText";
+
+  spanTimer.appendChild(hourglassIcon);
+  spanTimer.appendChild(timerText);
+
   //Creazione h2 titolo domanda
   const q = shuffledQuestions[currentQuestion];
   const title = document.createElement("h2");
@@ -248,6 +273,9 @@ function renderQuiz() {
 // GESTIONE RISPOSTA
 function handleAnswer(clickedBtn, answer, correctAnswer) {
   clearInterval(timerId);
+
+  timeLeft = 0;
+  updateTimerDisplay();
 
   setTimeout(() => {
     advance();
@@ -305,10 +333,38 @@ function startTimer() {
 //Funzione per far cambiare il colore al timer quando arriva a 5 secondi
 function updateTimerDisplay() {
   const display = document.querySelector("#timerDisplay");
-  if (display) {
-    //Numero che diminiusce
-    display.textContent = `${timeLeft}s`;
-    // Colore urgente sotto i 5 secondi
+  const timerText = document.querySelector("#timerText");
+  const hourglassIcon = document.querySelector("#hourglassIcon");
+
+  if (display && timerText) {
+    timerText.textContent = `${timeLeft}s`;
+
+    if (hourglassIcon) {
+      if (timeLeft === 0) {
+        hourglassIcon.textContent = "\uf254";
+        hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end", "fa-spin-snap-4");
+        hourglassIcon.classList.add("fa-hourglass");
+      } else {
+        hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end", "fa-hourglass");
+        hourglassIcon.classList.add("fa-solid");
+        const stepTime = (TIMER_DURATION - timeLeft) % 4;
+        if (stepTime === 0) {
+          hourglassIcon.textContent = "\uf251";
+          hourglassIcon.classList.remove("fa-spin-snap-4");
+          hourglassIcon.classList.add("fa-hourglass-start");
+        } else if (stepTime === 1) {
+          hourglassIcon.textContent = "\uf252";
+          hourglassIcon.classList.add("fa-hourglass-half");
+        } else if (stepTime === 2) {
+          hourglassIcon.textContent = "\uf253";
+          hourglassIcon.classList.add("fa-hourglass-end");
+        } else if (stepTime === 3) {
+          hourglassIcon.textContent = "\uf253";
+          hourglassIcon.classList.add("fa-spin-snap-4");
+        }
+      }
+    }
+
     if (timeLeft <= 5) {
       display.style.backgroundColor = "#ef4444";
       display.style.color = "#ffffff";
