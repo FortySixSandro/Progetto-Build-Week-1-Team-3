@@ -156,7 +156,6 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
-
   //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza, fa uno shuffle dell'array delle domande in modo che siano sempre in ordine casuale
   const button = document.createElement("button");
   button.classList.add("button");
@@ -336,42 +335,39 @@ function updateTimerDisplay() {
   const timerText = document.querySelector("#timerText");
   const hourglassIcon = document.querySelector("#hourglassIcon");
 
-  if (display && timerText) {
-    timerText.textContent = `${timeLeft}s`;
+  timerText.textContent = `${timeLeft}s`;
 
-    if (hourglassIcon) {
-      if (timeLeft === 0) {
-        hourglassIcon.textContent = "\uf254";
-        hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end", "fa-spin-snap-4");
-        hourglassIcon.classList.add("fa-hourglass");
-      } else {
-        hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end", "fa-hourglass");
-        hourglassIcon.classList.add("fa-solid");
-        const stepTime = (TIMER_DURATION - timeLeft) % 4;
-        if (stepTime === 0) {
-          hourglassIcon.textContent = "\uf251";
-          hourglassIcon.classList.remove("fa-spin-snap-4");
-          hourglassIcon.classList.add("fa-hourglass-start");
-        } else if (stepTime === 1) {
-          hourglassIcon.textContent = "\uf252";
-          hourglassIcon.classList.add("fa-hourglass-half");
-        } else if (stepTime === 2) {
-          hourglassIcon.textContent = "\uf253";
-          hourglassIcon.classList.add("fa-hourglass-end");
-        } else if (stepTime === 3) {
-          hourglassIcon.textContent = "\uf253";
-          hourglassIcon.classList.add("fa-spin-snap-4");
-        }
-      }
-    }
-
-    if (timeLeft <= 5) {
-      display.style.backgroundColor = "#ef4444";
-      display.style.color = "#ffffff";
-    } else {
-      display.style.backgroundColor = "#0c113bf1";
-      display.style.color = "#fff";
-    }
+  hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end");
+  hourglassIcon.classList.add("fa-solid");
+  const stepTime = (TIMER_DURATION - timeLeft) % 4;
+  if (stepTime === 0) {
+    hourglassIcon.textContent = "\uf251";
+    hourglassIcon.classList.remove("fa-spin-snap-4");
+    hourglassIcon.classList.add("fa-hourglass-start");
+  } else if (stepTime === 1) {
+    hourglassIcon.textContent = "\uf252";
+    hourglassIcon.classList.add("fa-hourglass-half");
+  } else if (stepTime === 2) {
+    hourglassIcon.textContent = "\uf253";
+    hourglassIcon.classList.add("fa-hourglass-end");
+  } else if (stepTime === 3) {
+    hourglassIcon.textContent = "\uf253";
+    hourglassIcon.classList.add("fa-spin-snap-4");
+  }
+  if (timeLeft <= 5 && timeLeft > 0) {
+    display.style.backgroundColor = "#ef4444";
+    display.style.color = "#ffffff";
+    hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-spin-snap-4");
+    hourglassIcon.classList.add("fa-hourglass-end", "fa-beat-fade");
+  } else if (timeLeft > 5 && timeLeft <= 20) {
+    display.style.backgroundColor = "#0c113bf1";
+    display.style.color = "#fff";
+  } else if (timeLeft === 0) {
+    display.style.backgroundColor = "#ef4444";
+    display.style.color = "#ffffff";
+    hourglassIcon.textContent = "\uf253";
+    hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-spin-snap-4", "fa-beat-fade");
+    hourglassIcon.classList.add("fa-hourglass-end");
   }
 }
 

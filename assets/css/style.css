@@ -123,7 +123,7 @@ body {
 }
 
 .timerBox {
-  padding: 8px 10px;
+  padding: 10px;
   border-radius: 6px;
   float: right;
 }
@@ -144,11 +144,12 @@ body {
 }
 
 .buttonDisabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: not-allowed;
-    opacity: 0.6;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
+
 /* Pagina risultati*/
 
 .resultsBar {
