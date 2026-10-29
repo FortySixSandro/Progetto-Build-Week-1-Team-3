@@ -82,7 +82,7 @@ body {
   cursor: pointer;
 }
  
-/* Bottoni categoria: DOPO .button / .button:hover così a parità di specificità vincono loro */
+
 .categories {
   display: flex;
   justify-content: center;
@@ -91,7 +91,7 @@ body {
 }
  
 .categoryBtn {
-  margin: 0; /* annulla il "margin: 0 auto" di .button, che dentro un flex distribuirebbe lo spazio */
+  margin: 0;
 }
  
 .categoryBtn.selected {
