@@ -14,72 +14,241 @@
    - incorrect_answers: array di risposte sbagliate (string[])
 */
 const QUESTIONS = [
-  {
-    question: "Cosa significa l'acronimo CPU?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
-  },
-  {
-    question:
-      "In Java, quale keyword si usa per impedire che una variabile venga modificata?",
-    correct_answer: "final",
-    incorrect_answers: ["static", "private", "public"],
-  },
-  {
-    question: "Il logo di Snapchat è una campana.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
-  },
-  {
-    question:
-      "I puntatori sono stati introdotti in C++ e non c'erano nel linguaggio C originale.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
-  },
-  {
-    question:
-      "Qual è il formato immagine più usato per i loghi nel database di Wikimedia?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
-  },
+  // DOMANDE CSS 10
   {
     question: "Cosa significa l'acronimo CSS?",
-    correct_answer: "Cascading Style Sheets",
+    correct_answer: "Cascading Style Sheet",
     incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheets",
-      "Computer Style Sheets",
+      "Cascading Style Sheets",
+      "Computer Style Sheet",
+      "Creative Style System",
     ],
+    category: "CSS",
   },
   {
-    question: "Qual è il nome in codice del sistema operativo Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
+    question: "Da quali tre parti è composta la struttura di una regola CSS?",
+    correct_answer: "Selettore, proprietà e valore",
+    incorrect_answers: [
+      "Tag, attributo e contenuto",
+      "Selettore, dichiarazione e parentesi",
+      "Classe, ID e attributo",
+    ],
+    category: "CSS",
   },
   {
-    question: "Qual era il limite originale di caratteri di un Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
+    question: "Dove deve essere posizionato il tag <link> al foglio di stile esterno all'interno dell'HTML?",
+    correct_answer: "Alla fine del <head>",
+    incorrect_answers: [
+      "All'inizio del <body>",
+      "Alla fine del <body>",
+      "Subito dopo il <title>",
+    ],
+    category: "CSS",
   },
   {
-    question: "Linux è stato creato come alternativa a Windows XP.",
-    correct_answer: "Falso",
-    incorrect_answers: ["Vero"],
+    question: "Quale metodo di inclusione CSS è il più utilizzato?",
+    correct_answer: "Esterno (file .css collegato con <link>)",
+    incorrect_answers: [
+      "Inline (attributo style)",
+      "Incorporato (blocco <style> nel <head>)",
+      "Importato con @import",
+    ],
+    category: "CSS",
   },
   {
-    question:
-      "Quale linguaggio di programmazione condivide il nome con un'isola dell'Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
+    question: "Nella gerarchia della specificità CSS, quale selettore vince su tutti gli altri (escluso !important)?",
+    correct_answer: "Stile inline",
+    incorrect_answers: ["ID", "Classe", "Tag"],
+    category: "CSS",
+  },
+  {
+    question: "Quale pseudo-classe si attiva quando il puntatore del mouse passa sopra un elemento?",
+    correct_answer: ":hover",
+    incorrect_answers: [":focus", ":active", ":visited"],
+    category: "CSS",
+  },
+  {
+    question: "Qual è la differenza tra :first-child e :first-of-type?",
+    correct_answer: ":first-child seleziona il primo figlio in assoluto, :first-of-type il primo figlio del suo tipo",
+    incorrect_answers: [
+      ":first-child seleziona il primo figlio del suo tipo, :first-of-type il primo in assoluto",
+      "Sono identici",
+      ":first-child funziona solo sui link, :first-of-type su tutti gli elementi",
+    ],
+    category: "CSS",
+  },
+  {
+    question: "Quale pseudo-elemento inserisce contenuto prima di un elemento (e richiede sempre la proprietà content)?",
+    correct_answer: "::before",
+    incorrect_answers: ["::after", "::placeholder", "::first-letter"],
+    category: "CSS",
+  },
+  {
+    question: "Quale valore di box-sizing fa sì che padding e border siano inclusi nella width/height?",
+    correct_answer: "border-box",
+    incorrect_answers: ["content-box", "padding-box", "margin-box"],
+    category: "CSS",
+  },
+  {
+    question: "Con root a 16px, a quanto equivale 2rem?",
+    correct_answer: "32px",
+    incorrect_answers: ["16px", "64px", "8px"],
+    category: "CSS",
+  },
+  // DOMANDE HTML 10
+  {
+    question: "Cosa significa l'acronimo HTML?",
+    correct_answer: "HyperText Markup Language",
+    incorrect_answers: [
+      "HyperText Markdown Language",
+      "HighText Markup Language",
+      "HyperTool Markup Language",
+    ],
+    category: "HTML",
+  },
+  {
+    question: "Quale attributo del tag <html> comunica la lingua della pagina ed è fondamentale per l'indicizzazione su Google?",
+    correct_answer: "lang",
+    incorrect_answers: ["language", "locale", "charset"],
+    category: "HTML",
+  },
+  {
+    question: "Quale tag HTML definisce il titolo della pagina, visibile anche nella scheda del browser?",
+    correct_answer: "<title>",
+    incorrect_answers: ["<h1>", "<header>", "<meta>"],
+    category: "HTML",
+  },
+  {
+    question: "Quale elemento semantico rappresenta il contenuto principale della pagina e deve essere unico?",
+    correct_answer: "<main>",
+    incorrect_answers: ["<section>", "<body>", "<content>"],
+    category: "HTML",
+  },
+  {
+    question: "Quale elemento HTML è l'unico contenitore generico inline?",
+    correct_answer: "<span>",
+    incorrect_answers: ["<div>", "<section>", "<inline>"],
+    category: "HTML",
+  },
+  {
+    question: "Quale differenza c'è tra <b> e <strong>?",
+    correct_answer: "<b> è solo visivo, <strong> indica contenuto importante semanticamente",
+    incorrect_answers: [
+      "<b> indica contenuto importante, <strong> è solo visivo",
+      "Sono identici",
+      "<b> è inline, <strong> è block",
+    ],
+    category: "HTML",
+  },
+  {
+    question: "Quale attributo di un link apre la destinazione in una nuova pagina?",
+    correct_answer: "target=\"_blank\"",
+    incorrect_answers: ["href=\"_blank\"", "rel=\"_blank\"", "new=\"_blank\""],
+    category: "HTML",
+  },
+  {
+    question: "Quale metodo HTTP mette i dati in chiaro nell'URL e non ha limite di dimensione?",
+    correct_answer: "GET",
+    incorrect_answers: ["POST", "PUT", "SEND"],
+    category: "HTML",
+  },
+  {
+    question: "Quale tag HTML raggruppa i campi di un form in un box bordato con un titolo?",
+    correct_answer: "<fieldset>",
+    incorrect_answers: ["<formgroup>", "<legend>", "<group>"],
+    category: "HTML",
+  },
+  {
+    question: "Nelle tabelle HTML, quale attributo unisce più celle orizzontalmente (colonne)?",
+    correct_answer: "colspan",
+    incorrect_answers: ["rowspan", "merge", "span"],
+    category: "HTML",
+  },
+  // Domande JavaScript 10
+  {
+    question: "Quale keyword JavaScript dichiara una variabile non riassegnabile?",
+    correct_answer: "const",
+    incorrect_answers: ["let", "var", "final"],
+    category: "JavaScript",
+  },
+  {
+    question: "Cosa restituisce `typeof null` in JavaScript?",
+    correct_answer: "\"object\"",
+    incorrect_answers: ["\"null\"", "\"undefined\"", "\"boolean\""],
+    category: "JavaScript",
+  },
+  {
+    question: "Qual è la differenza tra == e === in JavaScript?",
+    correct_answer: "== confronta solo il valore (con conversione di tipo), === confronta tipo e valore",
+    incorrect_answers: [
+      "== confronta tipo e valore, === solo il valore",
+      "Sono identici",
+      "=== è deprecato",
+    ],
+    category: "JavaScript",
+  },
+  {
+    question: "Cosa restituisce l'operatore || (OR) con valori non booleani?",
+    correct_answer: "Il primo operando che vale come true, oppure l'ultimo se nessuno è true",
+    incorrect_answers: [
+      "Sempre un booleano true o false",
+      "Sempre il primo operando",
+      "Sempre undefined",
+    ],
+    category: "JavaScript",
+  },
+  {
+    question: "Quale metodo degli array restituisce un nuovo array applicando una funzione a ogni elemento?",
+    correct_answer: "map()",
+    incorrect_answers: ["forEach()", "filter()", "find()"],
+    category: "JavaScript",
+  },
+  {
+    question: "Quale metodo degli array restituisce solo gli elementi che soddisfano una condizione, conservando gli oggetti interi?",
+    correct_answer: "filter()",
+    incorrect_answers: ["map()", "find()", "some()"],
+    category: "JavaScript",
+  },
+  {
+    question: "Quale metodo degli array aggrega tutti gli elementi in un singolo valore (es. una somma)?",
+    correct_answer: "reduce()",
+    incorrect_answers: ["map()", "reduceRight()", "join()"],
+    category: "JavaScript",
+  },
+  {
+    question: "Nelle arrow function, come viene gestito il valore di `this`?",
+    correct_answer: "Eredita `this` dall'ambiente in cui è definita (this lessicale)",
+    incorrect_answers: [
+      "È dinamico e dipende da come viene invocata",
+      "È sempre undefined",
+      "È sempre window",
+    ],
+    category: "JavaScript",
+  },
+  {
+    question: "Cosa fa lo spread operator `...` applicato a un array?",
+    correct_answer: "Espande gli elementi dell'array in un nuovo contesto (copia superficiale)",
+    incorrect_answers: [
+      "Crea un riferimento condiviso allo stesso array",
+      "Ordina l'array",
+      "Rimuove i duplicati",
+    ],
+    category: "JavaScript",
+  },
+  {
+    question: "Quale metodo DOM restituisce solo il primo elemento che corrisponde a un selettore CSS?",
+    correct_answer: "querySelector()",
+    incorrect_answers: [
+      "querySelectorAll()",
+      "getElementById()",
+      "getElementsByClassName()",
+    ],
+    category: "JavaScript",
   },
 ];
 
 /* Costanti del quiz */
-const TOTAL_QUESTIONS = QUESTIONS.length;
+const CATEGORIES = ["JavaScript", "HTML", "CSS"];
 const PASS_THRESHOLD = 60; // percentuale minima per "Promosso"
 const FEEDBACK_DELAY = 1000; // ms di attesa dopo risposta prima di avanzare
 const TIMER_DURATION = 20; // secondi per ogni domanda
@@ -91,17 +260,8 @@ let score = 0;
 let timerId = null;
 let timeLeft = TIMER_DURATION;
 let shuffledQuestions = [];
-
-/* SCRIVI QUI LE TUE FUNZIONI:
-   - render() che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
-   - renderWelcome() per la schermata iniziale con button Inizia
-   - renderQuiz() per la domanda corrente con i button risposta + counter + timer
-   - renderResults() per la schermata finale con percentuale + barre + verdetto
-   - startTimer() / stopTimer() per il countdown
-   - handleAnswer(button, answer) per il click su una risposta
-   - handleTimeUp() per il tempo scaduto
-   - advance() per andare alla domanda successiva o ai risultati
-*/
+let userAnswers = [];
+let selectedCategories = [];
 
 const container = document.querySelector(".container");
 
@@ -134,12 +294,12 @@ function renderWelcome() {
   const paragraph = document.createElement("p");
   divParagraph.classList.add("paragraph");
   paragraph.textContent =
-    "Una serie di 10 domande sul mondo dell'informativa e del web. Per ogni domanda hai 20 secondi di tempo.";
+    "Scegli una o più categorie e rispondi a una serie di domande sul mondo dell'informatica e del web.";
 
   container.appendChild(divParagraph);
   divParagraph.appendChild(paragraph);
 
-  //Credo un div con una lista, aggiungo la classe .list al div e la appendo a container
+  //Creo un div con una lista, aggiungo la classe .list al div e la appendo a container
   const divList = document.createElement("div");
   divList.classList.add("list");
   const ul = document.createElement("ul");
@@ -156,51 +316,78 @@ function renderWelcome() {
   ul.appendChild(li2);
   ul.appendChild(li3);
 
-  //Creo un bottone per iniziare che quando cliccato aggiorna lo stato e renderizza, fa uno shuffle dell'array delle domande in modo che siano sempre in ordine casuale
+  //Creo il bottone per iniziare (parte disattivato)
   const button = document.createElement("button");
-  button.classList.add("button");
+  button.classList.add("button", "buttonDisabled");
   button.textContent = "Inizia";
   button.disabled = true;
 
-
-  //checkbox 
+  //checkbox
   const labelConditions = document.createElement("label");
-  labelConditions.classList.add("labelConditions");
+  labelConditions.classList.add("paragraph");
 
   const checkboxConditions = document.createElement("input");
   checkboxConditions.type = "checkbox";
   checkboxConditions.classList.add("conditions");
 
-  labelConditions.appendChild(checkboxConditions);
-  labelConditions.textContent = "Prometto di rispondere da solo e senza l'aiuto di nessuno";
+  // testo prima, checkbox dopo
+  labelConditions.append(
+    "Prometto di rispondere da solo e senza l'aiuto di nessuno",
+    checkboxConditions
+  );
 
-  //spunta bottone attivo
-  checkboxConditions.addEventListener("change", () => {
-    if (checkboxConditions.checked) {
-      button.disabled = false;
-      button.classList.add("buttonDisabled");
-    } else {
-      button.disabled = true;
-    }
+  // Inizia è attivo solo se la checkbox è spuntata e almeno una domanda nelle categorie scelte
+  function updateStartButton() {
+    const availableQuestions = QUESTIONS.filter((q) =>
+      selectedCategories.includes(q.category)
+    );
+    const canStart = checkboxConditions.checked && availableQuestions.length > 0;
+    button.disabled = !canStart;
+    button.classList.toggle("buttonDisabled", !canStart);
+  }
+
+  checkboxConditions.addEventListener("change", updateStartButton);
+
+  //Bottoni delle categorie
+  const divCategories = document.createElement("div");
+  divCategories.classList.add("categories");
+
+  CATEGORIES.forEach((category) => {
+    const btnCategory = document.createElement("button");
+    btnCategory.classList.add("button", "categoryBtn");
+    btnCategory.textContent = category;
+
+    btnCategory.addEventListener("click", () => {
+      if (selectedCategories.includes(category)) {
+        selectedCategories = selectedCategories.filter((c) => c !== category);
+      } else {
+        selectedCategories.push(category);
+      }
+      btnCategory.classList.toggle(
+        "selected",
+        selectedCategories.includes(category)
+      );
+      updateStartButton();
+    });
+
+    divCategories.appendChild(btnCategory);
   });
 
-  // aggiunto evento
+  // Click su Inizia: filtra le domande per categoria, le mescola e aggiorna lo stato
   button.addEventListener("click", () => {
-    shuffledQuestions = [...QUESTIONS];
+    shuffledQuestions = QUESTIONS.filter((q) =>
+      selectedCategories.includes(q.category)
+    );
     shuffledQuestions.sort(() => Math.random() - 0.5);
-    // aggiorna lo stato
     currentScreen = "quiz";
-    //render per aggiornare la schermata
-    render()
+    userAnswers = [];
+    render();
   });
 
-  container.appendChild(labelConditions)
-  labelConditions.appendChild(checkboxConditions);
-  container.appendChild(button);
-
+  container.appendChild(divCategories);
   container.appendChild(labelConditions);
   container.appendChild(button);
-};
+}
 
 window.onload = () => {
   render();
@@ -215,7 +402,7 @@ function renderQuiz() {
 
   const spanNum = document.createElement("span");
   spanNum.classList.add("questNum");
-  spanNum.textContent = `Domanda ${currentQuestion + 1} di ${TOTAL_QUESTIONS}`;
+  spanNum.textContent = `Domanda ${currentQuestion + 1} di ${shuffledQuestions.length}`;
 
   const spanTimer = document.createElement("div");
   spanTimer.classList.add("timerBox");
@@ -245,6 +432,8 @@ function renderQuiz() {
   const allAnswers = [q.correct_answer, ...q.incorrect_answers];
   allAnswers.sort(() => Math.random() - 0.5);
 
+  q.shuffledAnswers = allAnswers;
+
   //Ciclo per creare bottoni risposta in base al numero delle risposte necessarie
   allAnswers.forEach((answer) => {
     const btn = document.createElement("button");
@@ -272,6 +461,7 @@ function renderQuiz() {
 // GESTIONE RISPOSTA
 function handleAnswer(clickedBtn, answer, correctAnswer) {
   clearInterval(timerId);
+  userAnswers[currentQuestion] = answer;
 
   timeLeft = 0;
   updateTimerDisplay();
@@ -303,7 +493,7 @@ function handleAnswer(clickedBtn, answer, correctAnswer) {
 function advance() {
   currentQuestion++;
 
-  if (currentQuestion < TOTAL_QUESTIONS) {
+  if (currentQuestion < shuffledQuestions.length) {
     renderQuiz();
   } else {
     currentScreen = "results";
@@ -373,6 +563,7 @@ function updateTimerDisplay() {
 
 //Funzione per visualizzare la risposta giusta allo scadere del tempo, non c'è score++ perché se non rispondi non fai punti, per questo colora soltanto la risposta verde se il tempo è scaduto senza aggiungere punti per renderResults
 function handleTimeUp() {
+  userAnswers[currentQuestion] = null;
   const q = shuffledQuestions[currentQuestion];
   const allBtns = document.querySelectorAll(".answer");
 
@@ -390,7 +581,7 @@ function handleTimeUp() {
 
 //Funzione che stampa a schermo i risultati del test
 function renderResults() {
-  //Creazione di div che sono stilizzati in CSS con classe resultsBar (le barre colorate esterne al cerchio), resultsBarFill (un cerchio bianco interno per dare l'effetto del grafico Epicode) e resultsInfo (Le scritte all'interno del cerchio resultBarFill)
+  const total = shuffledQuestions.length;
 
   const titleResult = document.createElement("h1");
   titleResult.textContent = "Risultati";
@@ -420,8 +611,11 @@ function renderResults() {
   const wrongAnswerText = document.createElement("p");
   wrongAnswerText.classList.add("resultsInfo");
 
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("buttonsContainer");
+
   const buttonRestart = document.createElement("button");
-  buttonRestart.classList.add("buttonRestart");
+  buttonRestart.classList.add("buttonResults");
   buttonRestart.textContent = "Ricomincia";
 
   buttonRestart.addEventListener("click", () => {
@@ -431,13 +625,26 @@ function renderResults() {
     clearInterval(timerId);
     timeLeft = TIMER_DURATION;
     shuffledQuestions = [];
+    userAnswers = [];
+    selectedCategories = [];
     render();
   });
 
-  correctAnswerNumber.textContent = `${score}/10`;
+  const buttonShowResults = document.createElement("button");
+  buttonShowResults.classList.add("buttonResults");
+  buttonShowResults.textContent = "Mostra risultati";
+
+  buttonShowResults.addEventListener("click", () => {
+    showResults();
+  });
+
+  buttonsContainer.appendChild(buttonShowResults);
+  buttonsContainer.appendChild(buttonRestart);
+
+  correctAnswerNumber.textContent = `${score}/${total}`;
   correctAnswerText.textContent = "Risposte corrette";
 
-  wrongAnswerNumber.textContent = `${TOTAL_QUESTIONS - score}/10`;
+  wrongAnswerNumber.textContent = `${total - score}/${total}`;
   wrongAnswerText.textContent = "Risposte errate";
 
   divContainerAnswers.appendChild(divCorrectAnswerNumber);
@@ -446,7 +653,6 @@ function renderResults() {
   divCorrectAnswerNumber.appendChild(correctAnswerText);
   divWrongAnswerNumber.appendChild(wrongAnswerNumber);
   divWrongAnswerNumber.appendChild(wrongAnswerText);
-
 
   const resultsBar = document.createElement("div");
   resultsBar.classList.add("resultsBar");
@@ -458,7 +664,7 @@ function renderResults() {
   resultsScore.classList.add("resultsScore");
 
   //Percentuale di risposte corrette con if per la visualizzazione, se sopra 60% promosso, se sotto bocciato
-  const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
+  const percentage = Math.round((score / total) * 100);
 
   const textResults = document.createElement("p");
   textResults.classList.add("textResults");
@@ -510,5 +716,40 @@ function renderResults() {
   container.appendChild(resultsBar);
   container.appendChild(textResults);
   container.appendChild(divContainerAnswers);
-  container.appendChild(buttonRestart);
+  container.appendChild(buttonsContainer);
+}
+
+function showResults() {
+  const clearResults = document.querySelector(".divResults");
+  if (clearResults) {
+    clearResults.remove();
+  }
+
+  const divResults = document.createElement("div");
+  divResults.classList.add("divResults");
+
+  const divResultsTitle = document.createElement("h3");
+  divResultsTitle.textContent = "Riepilogo delle tue risposte:";
+  divResultsTitle.classList.add("divResultsTitle");
+  divResults.appendChild(divResultsTitle);
+
+  shuffledQuestions.forEach((quest, index) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("questionDiv");
+
+    const questionTitle = document.createElement("p");
+    questionTitle.classList.add("questionTitle");
+    questionTitle.textContent = `Domanda ${index + 1}: ${quest.question}`;
+    questionDiv.appendChild(questionTitle);
+
+    quest.shuffledQuestions.forEach((answer) => {
+      const chooseAnswer = document.createElement("div");
+      chooseAnswer.classList.add("chooseAnswer");
+      chooseAnswer.textContent = answer;
+
+      questionDiv.appendChild(chooseAnswer);
+    });
+    divResults.appendChild(questionDiv);
+  });
+  container.appendChild(divResults);
 }
