@@ -742,10 +742,20 @@ function showResults() {
     questionTitle.textContent = `Domanda ${index + 1}: ${quest.question}`;
     questionDiv.appendChild(questionTitle);
 
-    quest.shuffledQuestions.forEach((answer) => {
+    const userArrayAnswer = userAnswers[index];
+
+    quest.shuffledAnswers.forEach((answer) => {
       const chooseAnswer = document.createElement("div");
-      chooseAnswer.classList.add("chooseAnswer");
       chooseAnswer.textContent = answer;
+      chooseAnswer.classList.add("chooseAnswer");
+
+      if (answer === quest.correct_answer) {
+        chooseAnswer.classList.add("true");
+      } else if (answer === userArrayAnswer && answer !== quest.correct_answer) {
+        chooseAnswer.classList.add("false");
+      } else {
+        chooseAnswer.classList.add("default");
+      };
 
       questionDiv.appendChild(chooseAnswer);
     });

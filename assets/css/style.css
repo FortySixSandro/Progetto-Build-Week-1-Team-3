@@ -195,7 +195,7 @@ body {
   opacity: 0.6;
 }
  
-/* Senza questo, .button:hover (più specifico) colorava il bottone disattivato al passaggio del mouse */
+
 .buttonDisabled:hover {
   background-color: #cccccc;
   cursor: not-allowed;
@@ -328,10 +328,22 @@ body {
   padding: 15px;
   border: 1px solid #cccccc;
   border-radius: 8px;
-  background-color: #e3e3e3;
+  background-color: #f3f3f3;
 }
 
 .questionTitle {
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.chooseAnswer {
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.default{
+  background-color: #ffffff;
+  color: #494b52;
 }
