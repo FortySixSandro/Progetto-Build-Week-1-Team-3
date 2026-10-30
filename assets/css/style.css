@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
 }
- 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #1b1535 url("../img/bg.jpg") center / cover no-repeat fixed;
@@ -14,18 +14,18 @@ body {
   align-items: center;
   padding: 24px;
 }
- 
+
 .brand {
   width: 100%;
   max-width: 720px;
   margin-bottom: 24px;
   text-align: left;
 }
- 
+
 .brand-logo {
   height: 36px;
 }
- 
+
 #app {
   background: #ffffff;
   border-radius: 16px;
@@ -35,37 +35,37 @@ body {
   width: 100%;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
- 
+
 .paragraph {
   margin-bottom: 1.1rem;
   line-height: 1.5;
   color: #494b52;
 }
- 
+
 .paragraphResult {
   margin-bottom: 1.1rem;
   line-height: 1.5;
   text-align: center;
   font-weight: bold;
 }
- 
+
 .title {
   margin-bottom: 1.1rem;
   line-height: 1.5;
   text-align: center;
 }
- 
+
 .list {
   padding-left: 15px;
   margin-bottom: 1.2rem;
 }
- 
+
 .list li {
   padding-left: 8px;
   color: #494b52;
 }
- 
-/*BOTTONI */
+
+/* BOTTONI */
 .button {
   padding: 0.6rem 1.3rem;
   background-color: #1b1535;
@@ -73,15 +73,14 @@ body {
   border-radius: 8px;
   border: none;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 16px;
   display: block;
 }
- 
+
 .button:hover {
   background-color: #303859;
   cursor: pointer;
 }
- 
 
 .categories {
   display: flex;
@@ -89,19 +88,19 @@ body {
   gap: 8px;
   margin-bottom: 1.1rem;
 }
- 
+
 .categoryBtn {
   margin: 0;
 }
- 
+
 .categoryBtn.selected {
   background-color: #10b981;
 }
- 
+
 .categoryBtn.selected:hover {
   background-color: #0e9f6e;
 }
- 
+
 .answer {
   border: 2px solid #1b1535;
   text-align: left;
@@ -112,56 +111,58 @@ body {
   border-radius: 8px;
   margin: 8px;
 }
- 
+
 .answer:hover {
   background-color: #303859;
   border: 2px solid #1b1535;
   color: white;
   cursor: pointer;
 }
- 
+
 .true {
   background-color: #10b981;
   color: white;
   border-color: #10b981;
 }
- 
+
 .false {
   background-color: #ef4444;
   color: white;
   border-color: #ef4444;
 }
- 
+
 .quizHeader {
   flex-direction: column;
   margin-bottom: 2rem;
   font-weight: bold;
   color: #1b1535;
 }
- 
+
 .timerBox {
   display: flex;
   justify-content: space-around;
   padding: 10px;
   border-radius: 6px;
-  float: right; 
-  width: 80px;
+  float: right;
+  width: 75px;
 }
- 
+
 #hourglassIcon {
   margin-right: 6px;
   font-family: "FontAwesome";
   font-size: 16px;
   font-weight: 700;
 }
- 
+
 #timerText {
   font-size: 16px;
 }
- 
-.conditions {
-  appearance: none;
-  -webkit-appearance: none;
+
+/* STILIZZAZIONE DA ZERO DEL CHECKBOX */
+
+.conditions {                       
+  appearance: none;            /* INSERITI PER TOGLIERE LA STILIZZAZIONE STANDARD  DEL CHECKBOX */
+  -webkit-appearance: none;    /* <----  */
   vertical-align: middle;
   margin-left: 6px;
   margin-bottom: 1px;
@@ -173,11 +174,11 @@ body {
   cursor: pointer;
   position: relative;
 }
- 
+
 .conditions:checked {
   background-color: #1b1535;
 }
- 
+
 .conditions:checked::after {
   content: "✓";
   color: #fff;
@@ -187,22 +188,21 @@ body {
   top: -2.5px;
   left: 1.5px;
 }
- 
+
 .buttonDisabled {
   background-color: #cccccc;
   color: #666666;
   cursor: not-allowed;
   opacity: 0.6;
 }
- 
+
 
 .buttonDisabled:hover {
   background-color: #cccccc;
   cursor: not-allowed;
 }
- 
+
 /* Pagina risultati*/
- 
 .resultsBar {
   width: 250px;
   height: 250px;
@@ -212,7 +212,7 @@ body {
   padding: 10px;
   background: conic-gradient(#FF6467 0% 0%, #FF6467 0% 0%);
 }
- 
+
 .resultsBarFill {
   width: 200px;
   height: 200px;
@@ -228,17 +228,17 @@ body {
   text-align: center;
   padding: 10px;
 }
- 
+
 .resultsScore {
   font-size: 48px;
   font-weight: bold;
 }
- 
+
 .buttonsContainer {
-  margin-top: 20px;
+  margin-top: 0;
   text-align: center;
 }
- 
+
 .buttonResults {
   display: inline-block;
   width: 145px;
@@ -251,37 +251,37 @@ body {
   font-size: 13px;
   margin-right: 8px;
 }
- 
+
 .buttonResults:hover {
   background-color: #303859;
   cursor: pointer;
 }
- 
+
 .corrette {
   color: #22C55E;
   background-color: #E2F5E2;
 }
- 
+
 .errate {
   color: #FF6467;
   background-color: rgba(175, 52, 59, 0.308);
 }
- 
+
 .percentPromosso {
   color: #22C55E;
 }
- 
+
 .percentBocciato {
   color: #FF6467;
 }
- 
+
 .resultsDivs {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
 }
- 
+
 .resultsDivsContainer {
   padding: 12px;
   display: flex;
@@ -289,7 +289,7 @@ body {
   align-items: center;
   margin-bottom: 1rem;
 }
- 
+
 .resultsNumber {
   padding: 2px;
   font-size: 32px;
@@ -301,12 +301,12 @@ body {
   border-radius: 10px;
   margin-top: 10px;
 }
- 
+
 .resultsInfo {
   font-size: 24px;
   font-weight: bold;
 }
- 
+
 .textResults {
   text-align: center;
   padding: 10px 0;
@@ -316,14 +316,14 @@ body {
 }
 
 .divResults {
-  margin-top: 18px;
+  margin-top: 24px;
 }
 
 .divResultsTitle {
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
-.questionDiv{
+.questionDiv {
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #cccccc;
@@ -336,14 +336,26 @@ body {
   margin-bottom: 10px;
 }
 
+.default {
+  background-color: #ffffff;
+  color: #494b52;
+}
+
 .chooseAnswer {
+  position: relative;
   padding: 8px 12px;
   margin: 6px 0;
   border-radius: 6px;
   border: 1px solid #ddd;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
 }
 
-.default{
-  background-color: #ffffff;
-  color: #494b52;
+.cross {
+  color: red;
+  font-weight: bold;
+  margin-right: 4px;
 }

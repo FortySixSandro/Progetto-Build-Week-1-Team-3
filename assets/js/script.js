@@ -36,7 +36,8 @@ const QUESTIONS = [
     category: "CSS",
   },
   {
-    question: "Dove deve essere posizionato il tag <link> al foglio di stile esterno all'interno dell'HTML?",
+    question:
+      "Dove deve essere posizionato il tag <link> al foglio di stile esterno all'interno dell'HTML?",
     correct_answer: "Alla fine del <head>",
     incorrect_answers: [
       "All'inizio del <body>",
@@ -56,20 +57,23 @@ const QUESTIONS = [
     category: "CSS",
   },
   {
-    question: "Nella gerarchia della specificità CSS, quale selettore vince su tutti gli altri (escluso !important)?",
+    question:
+      "Nella gerarchia della specificità CSS, quale selettore vince su tutti gli altri (escluso !important)?",
     correct_answer: "Stile inline",
     incorrect_answers: ["ID", "Classe", "Tag"],
     category: "CSS",
   },
   {
-    question: "Quale pseudo-classe si attiva quando il puntatore del mouse passa sopra un elemento?",
+    question:
+      "Quale pseudo-classe si attiva quando il puntatore del mouse passa sopra un elemento?",
     correct_answer: ":hover",
     incorrect_answers: [":focus", ":active", ":visited"],
     category: "CSS",
   },
   {
     question: "Qual è la differenza tra :first-child e :first-of-type?",
-    correct_answer: ":first-child seleziona il primo figlio in assoluto, :first-of-type il primo figlio del suo tipo",
+    correct_answer:
+      ":first-child seleziona il primo figlio in assoluto, :first-of-type il primo figlio del suo tipo",
     incorrect_answers: [
       ":first-child seleziona il primo figlio del suo tipo, :first-of-type il primo in assoluto",
       "Sono identici",
@@ -78,13 +82,15 @@ const QUESTIONS = [
     category: "CSS",
   },
   {
-    question: "Quale pseudo-elemento inserisce contenuto prima di un elemento (e richiede sempre la proprietà content)?",
+    question:
+      "Quale pseudo-elemento inserisce contenuto prima di un elemento (e richiede sempre la proprietà content)?",
     correct_answer: "::before",
     incorrect_answers: ["::after", "::placeholder", "::first-letter"],
     category: "CSS",
   },
   {
-    question: "Quale valore di box-sizing fa sì che padding e border siano inclusi nella width/height?",
+    question:
+      "Quale valore di box-sizing fa sì che padding e border siano inclusi nella width/height?",
     correct_answer: "border-box",
     incorrect_answers: ["content-box", "padding-box", "margin-box"],
     category: "CSS",
@@ -107,19 +113,22 @@ const QUESTIONS = [
     category: "HTML",
   },
   {
-    question: "Quale attributo del tag <html> comunica la lingua della pagina ed è fondamentale per l'indicizzazione su Google?",
+    question:
+      "Quale attributo del tag <html> comunica la lingua della pagina ed è fondamentale per l'indicizzazione su Google?",
     correct_answer: "lang",
     incorrect_answers: ["language", "locale", "charset"],
     category: "HTML",
   },
   {
-    question: "Quale tag HTML definisce il titolo della pagina, visibile anche nella scheda del browser?",
+    question:
+      "Quale tag HTML definisce il titolo della pagina, visibile anche nella scheda del browser?",
     correct_answer: "<title>",
     incorrect_answers: ["<h1>", "<header>", "<meta>"],
     category: "HTML",
   },
   {
-    question: "Quale elemento semantico rappresenta il contenuto principale della pagina e deve essere unico?",
+    question:
+      "Quale elemento semantico rappresenta il contenuto principale della pagina e deve essere unico?",
     correct_answer: "<main>",
     incorrect_answers: ["<section>", "<body>", "<content>"],
     category: "HTML",
@@ -132,7 +141,8 @@ const QUESTIONS = [
   },
   {
     question: "Quale differenza c'è tra <b> e <strong>?",
-    correct_answer: "<b> è solo visivo, <strong> indica contenuto importante semanticamente",
+    correct_answer:
+      "<b> è solo visivo, <strong> indica contenuto importante semanticamente",
     incorrect_answers: [
       "<b> indica contenuto importante, <strong> è solo visivo",
       "Sono identici",
@@ -141,45 +151,51 @@ const QUESTIONS = [
     category: "HTML",
   },
   {
-    question: "Quale attributo di un link apre la destinazione in una nuova pagina?",
-    correct_answer: "target=\"_blank\"",
-    incorrect_answers: ["href=\"_blank\"", "rel=\"_blank\"", "new=\"_blank\""],
+    question:
+      "Quale attributo di un link apre la destinazione in una nuova pagina?",
+    correct_answer: 'target="_blank"',
+    incorrect_answers: ['href="_blank"', 'rel="_blank"', 'new="_blank"'],
     category: "HTML",
   },
   {
-    question: "Quale metodo HTTP mette i dati in chiaro nell'URL e non ha limite di dimensione?",
+    question:
+      "Quale metodo HTTP mette i dati in chiaro nell'URL e non ha limite di dimensione?",
     correct_answer: "GET",
     incorrect_answers: ["POST", "PUT", "SEND"],
     category: "HTML",
   },
   {
-    question: "Quale tag HTML raggruppa i campi di un form in un box bordato con un titolo?",
+    question:
+      "Quale tag HTML raggruppa i campi di un form in un box bordato con un titolo?",
     correct_answer: "<fieldset>",
     incorrect_answers: ["<formgroup>", "<legend>", "<group>"],
     category: "HTML",
   },
   {
-    question: "Nelle tabelle HTML, quale attributo unisce più celle orizzontalmente (colonne)?",
+    question:
+      "Nelle tabelle HTML, quale attributo unisce più celle orizzontalmente (colonne)?",
     correct_answer: "colspan",
     incorrect_answers: ["rowspan", "merge", "span"],
     category: "HTML",
   },
   // Domande JavaScript 10
   {
-    question: "Quale keyword JavaScript dichiara una variabile non riassegnabile?",
+    question:
+      "Quale keyword JavaScript dichiara una variabile non riassegnabile?",
     correct_answer: "const",
     incorrect_answers: ["let", "var", "final"],
     category: "JavaScript",
   },
   {
     question: "Cosa restituisce `typeof null` in JavaScript?",
-    correct_answer: "\"object\"",
-    incorrect_answers: ["\"null\"", "\"undefined\"", "\"boolean\""],
+    correct_answer: '"object"',
+    incorrect_answers: ['"null"', '"undefined"', '"boolean"'],
     category: "JavaScript",
   },
   {
     question: "Qual è la differenza tra == e === in JavaScript?",
-    correct_answer: "== confronta solo il valore (con conversione di tipo), === confronta tipo e valore",
+    correct_answer:
+      "== confronta solo il valore (con conversione di tipo), === confronta tipo e valore",
     incorrect_answers: [
       "== confronta tipo e valore, === solo il valore",
       "Sono identici",
@@ -189,7 +205,8 @@ const QUESTIONS = [
   },
   {
     question: "Cosa restituisce l'operatore || (OR) con valori non booleani?",
-    correct_answer: "Il primo operando che vale come true, oppure l'ultimo se nessuno è true",
+    correct_answer:
+      "Il primo operando che vale come true, oppure l'ultimo se nessuno è true",
     incorrect_answers: [
       "Sempre un booleano true o false",
       "Sempre il primo operando",
@@ -198,26 +215,30 @@ const QUESTIONS = [
     category: "JavaScript",
   },
   {
-    question: "Quale metodo degli array restituisce un nuovo array applicando una funzione a ogni elemento?",
+    question:
+      "Quale metodo degli array restituisce un nuovo array applicando una funzione a ogni elemento?",
     correct_answer: "map()",
     incorrect_answers: ["forEach()", "filter()", "find()"],
     category: "JavaScript",
   },
   {
-    question: "Quale metodo degli array restituisce solo gli elementi che soddisfano una condizione, conservando gli oggetti interi?",
+    question:
+      "Quale metodo degli array restituisce solo gli elementi che soddisfano una condizione, conservando gli oggetti interi?",
     correct_answer: "filter()",
     incorrect_answers: ["map()", "find()", "some()"],
     category: "JavaScript",
   },
   {
-    question: "Quale metodo degli array aggrega tutti gli elementi in un singolo valore (es. una somma)?",
+    question:
+      "Quale metodo degli array aggrega tutti gli elementi in un singolo valore (es. una somma)?",
     correct_answer: "reduce()",
     incorrect_answers: ["map()", "reduceRight()", "join()"],
     category: "JavaScript",
   },
   {
     question: "Nelle arrow function, come viene gestito il valore di `this`?",
-    correct_answer: "Eredita `this` dall'ambiente in cui è definita (this lessicale)",
+    correct_answer:
+      "Eredita `this` dall'ambiente in cui è definita (this lessicale)",
     incorrect_answers: [
       "È dinamico e dipende da come viene invocata",
       "È sempre undefined",
@@ -227,7 +248,8 @@ const QUESTIONS = [
   },
   {
     question: "Cosa fa lo spread operator `...` applicato a un array?",
-    correct_answer: "Espande gli elementi dell'array in un nuovo contesto (copia superficiale)",
+    correct_answer:
+      "Espande gli elementi dell'array in un nuovo contesto (copia superficiale)",
     incorrect_answers: [
       "Crea un riferimento condiviso allo stesso array",
       "Ordina l'array",
@@ -236,7 +258,8 @@ const QUESTIONS = [
     category: "JavaScript",
   },
   {
-    question: "Quale metodo DOM restituisce solo il primo elemento che corrisponde a un selettore CSS?",
+    question:
+      "Quale metodo DOM restituisce solo il primo elemento che corrisponde a un selettore CSS?",
     correct_answer: "querySelector()",
     incorrect_answers: [
       "querySelectorAll()",
@@ -324,7 +347,7 @@ function renderWelcome() {
 
   //checkbox
   const labelConditions = document.createElement("label");
-  labelConditions.classList.add("paragraph");
+  labelConditions.classList.add("labelConditions");
 
   const checkboxConditions = document.createElement("input");
   checkboxConditions.type = "checkbox";
@@ -333,15 +356,16 @@ function renderWelcome() {
   // testo prima, checkbox dopo
   labelConditions.append(
     "Prometto di rispondere da solo e senza l'aiuto di nessuno",
-    checkboxConditions
+    checkboxConditions,
   );
 
   // Inizia è attivo solo se la checkbox è spuntata e almeno una domanda nelle categorie scelte
   function updateStartButton() {
     const availableQuestions = QUESTIONS.filter((q) =>
-      selectedCategories.includes(q.category)
+      selectedCategories.includes(q.category),
     );
-    const canStart = checkboxConditions.checked && availableQuestions.length > 0;
+    const canStart =
+      checkboxConditions.checked && availableQuestions.length > 0;
     button.disabled = !canStart;
     button.classList.toggle("buttonDisabled", !canStart);
   }
@@ -365,7 +389,7 @@ function renderWelcome() {
       }
       btnCategory.classList.toggle(
         "selected",
-        selectedCategories.includes(category)
+        selectedCategories.includes(category),
       );
       updateStartButton();
     });
@@ -376,7 +400,7 @@ function renderWelcome() {
   // Click su Inizia: filtra le domande per categoria, le mescola e aggiorna lo stato
   button.addEventListener("click", () => {
     shuffledQuestions = QUESTIONS.filter((q) =>
-      selectedCategories.includes(q.category)
+      selectedCategories.includes(q.category),
     );
     shuffledQuestions.sort(() => Math.random() - 0.5);
     currentScreen = "quiz";
@@ -527,9 +551,16 @@ function updateTimerDisplay() {
 
   timerText.textContent = `${timeLeft}s`;
 
-  hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-hourglass-end");
+  hourglassIcon.classList.remove(
+    "fa-hourglass-start",
+    "fa-hourglass-half",
+    "fa-hourglass-end",
+  );
+
   hourglassIcon.classList.add("fa-solid");
+
   const stepTime = (TIMER_DURATION - timeLeft) % 4;
+
   if (stepTime === 0) {
     hourglassIcon.textContent = "\uf251";
     hourglassIcon.classList.remove("fa-spin-snap-4");
@@ -544,10 +575,15 @@ function updateTimerDisplay() {
     hourglassIcon.textContent = "\uf253";
     hourglassIcon.classList.add("fa-spin-snap-4");
   }
+
   if (timeLeft <= 5 && timeLeft > 0) {
     display.style.backgroundColor = "#ef4444";
     display.style.color = "#ffffff";
-    hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-spin-snap-4");
+    hourglassIcon.classList.remove(
+      "fa-hourglass-start",
+      "fa-hourglass-half",
+      "fa-spin-snap-4",
+    );
     hourglassIcon.classList.add("fa-hourglass-end", "fa-beat-fade");
   } else if (timeLeft > 5 && timeLeft <= 20) {
     display.style.backgroundColor = "#0c113bf1";
@@ -556,7 +592,12 @@ function updateTimerDisplay() {
     display.style.backgroundColor = "#ef4444";
     display.style.color = "#ffffff";
     hourglassIcon.textContent = "\uf253";
-    hourglassIcon.classList.remove("fa-hourglass-start", "fa-hourglass-half", "fa-spin-snap-4", "fa-beat-fade");
+    hourglassIcon.classList.remove(
+      "fa-hourglass-start",
+      "fa-hourglass-half",
+      "fa-spin-snap-4",
+      "fa-beat-fade",
+    );
     hourglassIcon.classList.add("fa-hourglass-end");
   }
 }
@@ -749,13 +790,25 @@ function showResults() {
       chooseAnswer.textContent = answer;
       chooseAnswer.classList.add("chooseAnswer");
 
-      if (answer === quest.correct_answer) {
-        chooseAnswer.classList.add("true");
-      } else if (answer === userArrayAnswer && answer !== quest.correct_answer) {
-        chooseAnswer.classList.add("false");
+      if (!userArrayAnswer) {
+        if (answer === quest.correct_answer) {
+          chooseAnswer.classList.add("true");
+          const cross = document.createElement("span");
+          cross.textContent = "✖";
+          cross.classList.add("cross");
+          chooseAnswer.appendChild(cross);
+        } else {
+          chooseAnswer.classList.add("default");
+        }
       } else {
-        chooseAnswer.classList.add("default");
-      };
+        if (answer === quest.correct_answer) {
+          chooseAnswer.classList.add("true");
+        } else if (answer === userArrayAnswer && answer !== quest.correct_answer) {
+          chooseAnswer.classList.add("false");
+        } else {
+          chooseAnswer.classList.add("default");
+        }
+      }
 
       questionDiv.appendChild(chooseAnswer);
     });
