@@ -275,6 +275,7 @@ const CATEGORIES = ["JavaScript", "HTML", "CSS"];
 const PASS_THRESHOLD = 60; // percentuale minima per "Promosso"
 const FEEDBACK_DELAY = 1000; // ms di attesa dopo risposta prima di avanzare
 const TIMER_DURATION = 20; // secondi per ogni domanda
+const QUIZ_LENGTH = 10; // numero totale di domande per quiz
 
 /* Stato globale */
 let currentScreen = "welcome"; // "welcome" | "quiz" | "results"
@@ -287,6 +288,52 @@ let userAnswers = [];
 let selectedCategories = [];
 
 const container = document.querySelector(".container");
+
+// Mescola un array in modo uniforme (algoritmo Fisher-Yates).
+// Restituisce una COPIA mescolata e lascia intatto l'array originale.
+// Sostituisce sort(() => Math.random() - 0.5), che non mescola in modo uniforme, lo avevamo usato in precedenza ma dopo una documentazione
+// abbiamo visto che questo è un algoritmo più giusto per mescolare, perché da ad ogni valore la stessa probabilità di essere scelto.
+function shuffle(array) {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+//  Costruisce il quiz da QUIZ_LENGTH domande in base alle categorie scelte.
+//  - 1 categoria  = 10 domande da quella
+//  - 2 categorie  = 5 + 5
+//  - 3 categorie  = 3 + 3 + 4 (la categoria con la domanda in più è scelta a caso)
+function buildQuiz(categories) {
+  // Quante domande minimo per ogni categoria (10 / 3 = 3) e quante "avanzano" (10 % 3 = 1)
+  const base = Math.floor(QUIZ_LENGTH / categories.length);
+  const remainder = QUIZ_LENGTH % categories.length;
+
+  // Le categorie che ricevono una domanda in più vengono scelte a caso
+  const luckyCategories = shuffle(categories).slice(0, remainder);
+
+  let selected = [];
+
+  categories.forEach((category) => {
+    // Numero di domande per questa categoria: base, +1 se è fortunata
+    let howMany;
+
+    if (luckyCategories.includes(category)) {
+      howMany = base + 1;
+    } else {
+      howMany = base;
+    }
+
+    // Tutte le domande della categoria, mescolate, e ne prendo le prime howMany
+    const pool = QUESTIONS.filter((q) => q.category === category);
+    selected = selected.concat(shuffle(pool).slice(0, howMany));
+  });
+
+  // Mescolo di nuovo il risultato finale, così le categorie sono in ordine casuale
+  return shuffle(selected);
+}
 
 //Funzione che chiama renderWelcome / renderQuiz / renderResults in base a currentScreen
 function render() {
@@ -378,8 +425,16 @@ function renderWelcome() {
 
   CATEGORIES.forEach((category) => {
     const btnCategory = document.createElement("button");
-    btnCategory.classList.add("button", "categoryBtn");
+    btnCategory.classList.add("categoryBtn", "categoryClass");
     btnCategory.textContent = category;
+
+    if (category === 'JavaScript') {
+      btnCategory.classList.add("JavaScript");
+    } else if (category === 'HTML') {
+      btnCategory.classList.add("HTML");
+    } else if (category === 'CSS') {
+      btnCategory.classList.add("CSS");
+    }
 
     btnCategory.addEventListener("click", () => {
       if (selectedCategories.includes(category)) {
@@ -397,13 +452,11 @@ function renderWelcome() {
     divCategories.appendChild(btnCategory);
   });
 
-  // Click su Inizia: filtra le domande per categoria, le mescola e aggiorna lo stato
   button.addEventListener("click", () => {
-    shuffledQuestions = QUESTIONS.filter((q) =>
-      selectedCategories.includes(q.category),
-    );
-    shuffledQuestions.sort(() => Math.random() - 0.5);
+    shuffledQuestions = buildQuiz(selectedCategories);
     currentScreen = "quiz";
+    currentQuestion = 0;
+    score = 0;
     userAnswers = [];
     render();
   });
@@ -420,6 +473,9 @@ window.onload = () => {
 function renderQuiz() {
   //Pulizia del contenuto precedente (renderWelcome o una domanda precedente)
   container.textContent = "";
+
+  const q = shuffledQuestions[currentQuestion];
+
   //span con contatore della domanda
   const divHeader = document.createElement("div");
   divHeader.classList.add("quizHeader");
@@ -427,6 +483,18 @@ function renderQuiz() {
   const spanNum = document.createElement("span");
   spanNum.classList.add("questNum");
   spanNum.textContent = `Domanda ${currentQuestion + 1} di ${shuffledQuestions.length}`;
+
+  const questionCategory = document.createElement("span");
+  questionCategory.classList.add("questionCategory");
+  questionCategory.textContent = q.category;
+
+  if (q.category === 'JavaScript') {
+    questionCategory.style.backgroundColor = "#739c5f";
+  } else if (q.category === 'HTML') {
+    questionCategory.style.backgroundColor = "#d6bc6c";
+  } else if (q.category === 'CSS') {
+    questionCategory.style.backgroundColor = "#5995af";
+  }
 
   const spanTimer = document.createElement("div");
   spanTimer.classList.add("timerBox");
@@ -441,15 +509,17 @@ function renderQuiz() {
   spanTimer.appendChild(hourglassIcon);
   spanTimer.appendChild(timerText);
 
+  divHeader.appendChild(spanNum);
+  divHeader.appendChild(questionCategory);
+  divHeader.appendChild(spanTimer);
+
   //Creazione h2 titolo domanda
-  const q = shuffledQuestions[currentQuestion];
   const title = document.createElement("h2");
   title.classList.add("title");
   title.textContent = q.question;
 
   //Div delle risposte con i bottoni
   const divAnswer = document.createElement("div");
-  divAnswer.classList.add("quizHeader");
   divAnswer.appendChild(title);
 
   //Shuffle bottoni stampati delle domande
@@ -474,8 +544,6 @@ function renderQuiz() {
     }
   });
 
-  divHeader.appendChild(spanTimer);
-  divHeader.appendChild(spanNum);
   container.appendChild(divHeader);
   container.appendChild(divAnswer);
 
@@ -752,12 +820,17 @@ function renderResults() {
   resultsBarFill.appendChild(resultsScore);
   resultsBar.appendChild(resultsBarFill);
 
+  const legend = document.createElement("p");
+  legend.classList.add("legendResults");
+  legend.textContent = "Cliccando sul bottone \"Mostra Risultati\" vengono visualizzate le tue risposte corrette e errate. Le risposte corrette saranno evidenziate in verde, le risposte errate in rosso. Se non è stata data una risposta in tempo, sarà evidenziata di verde ma con una X rossa che sta a significare che il tuo punteggio non è aumentato con quella domanda.";
+
   container.appendChild(titleResult);
   container.appendChild(paragraphResult);
   container.appendChild(resultsBar);
   container.appendChild(textResults);
   container.appendChild(divContainerAnswers);
   container.appendChild(buttonsContainer);
+  container.appendChild(legend);
 }
 
 function showResults() {
@@ -790,8 +863,11 @@ function showResults() {
       chooseAnswer.textContent = answer;
       chooseAnswer.classList.add("chooseAnswer");
 
+      //Se l'utente non risponde alla domanda
       if (!userArrayAnswer) {
         if (answer === quest.correct_answer) {
+          // Si aggiunge la classe true alla domanda corretta anche se non selezionata, non si evidenzia niente di rosso (classe false) e quando viene premuto
+          // il bottone Mostra Risultati nella schermata di renderResults, la risposta non data sarà visualizzata in verde con una X rossa
           chooseAnswer.classList.add("true");
           const cross = document.createElement("span");
           cross.textContent = "✖";
@@ -800,6 +876,8 @@ function showResults() {
         } else {
           chooseAnswer.classList.add("default");
         }
+        // Se l'utente risponde alla domanda, se risponde correttamente si evidenzierà il bottone di verde, altrimenti si evidenzierà di rosso la risposta data
+        // dall'utente e sarà evidenziata in verde la risposta corretta
       } else {
         if (answer === quest.correct_answer) {
           chooseAnswer.classList.add("true");
