@@ -61,7 +61,7 @@ Progetto realizzato in HTML, CSS e JavaScript puro, senza librerie né framework
 ## 🛠️ Tecnologie usate
 
 - **HTML5**: struttura della pagina.
-- **CSS3**: layout con Flexbox, stati hover, `conic-gradient` per il grafico dei risultati.
+- **CSS3**: layout con Flexbox e Box Model, stati hover, `conic-gradient` per il grafico dei risultati.
 - **JavaScript (ES6+)**: tutta la logica del quiz, con `const`/`let`, arrow function, `addEventListener`, `querySelector` e creazione degli elementi tramite DOM. Il codice segue il pattern **stato → render → eventi**.
 - **Font Awesome**: icona della clessidra del timer (caricata tramite kit CDN).
 
