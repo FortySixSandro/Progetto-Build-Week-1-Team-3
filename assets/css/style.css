@@ -1,4 +1,4 @@
-  * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -36,6 +36,12 @@
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   }
 
+  .title {
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
   .paragraph {
     margin-bottom: 1.1rem;
     line-height: 1.5;
@@ -47,21 +53,6 @@
     line-height: 1.5;
     text-align: center;
     font-weight: bold;
-  }
-
-  .legendResults {
-    margin-bottom: 1.1rem;
-    line-height: 1.5;
-    margin-top: 1.5rem;
-    text-align: center;
-    color: #494b52;
-    font-style: italic;
-  }
-
-  .title {
-    margin-bottom: 1.1rem;
-    line-height: 1.5;
-    text-align: center;
   }
 
   .list {
@@ -91,11 +82,82 @@
     cursor: pointer;
   }
 
+  .buttonDisabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .buttonDisabled:hover {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  .labelConditions {
+    color: #494b52;
+    font-style: italic;
+  }
+
+  /* STILIZZAZIONE DA ZERO DEL CHECKBOX */
+
+  .conditions {
+    appearance: none;
+    /* INSERITI PER TOGLIERE LA STILIZZAZIONE STANDARD  DEL CHECKBOX */
+    -webkit-appearance: none;
+    /* <----  */
+    vertical-align: middle;
+    margin-left: 6px;
+    margin-bottom: 1px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #1b1535;
+    border-radius: 4px;
+    background-color: #ffffff;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .conditions:checked {
+    background-color: #1b1535;
+  }
+
+  .conditions:checked::after {
+    content: "✓";
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    position: absolute;
+    top: -3px;
+    left: 0.5px;
+  }
+
   .categories {
     display: flex;
     justify-content: center;
     gap: 8px;
     margin-bottom: 1.1rem;
+  }
+
+  .categoryBtn {
+    padding: 0.6rem 1.3rem;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    margin: 0 auto;
+    margin-top: 16px;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .categoryBtn.selected {
+    background-color: #10b981;
+  }
+
+  .categoryBtn.selected:hover {
+    background-color: #0e9f6e;
   }
 
   .JavaScript {
@@ -122,25 +184,19 @@
     background-color: #678592;
   }
 
-  .categoryBtn {
-    padding: 0.6rem 1.3rem;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    margin: 0 auto;
-    margin-top: 16px;
-    display: block;
-    margin: 0;
-    cursor: pointer;
+  .quizHeader {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
     font-weight: bold;
+    color: #1b1535;
   }
 
-  .categoryBtn.selected {
-    background-color: #10b981;
-  }
-
-  .categoryBtn.selected:hover {
-    background-color: #0e9f6e;
+  .questNum {
+    width: 12.5%;
+    text-align: center;
   }
 
   .questionCategory {
@@ -148,6 +204,25 @@
     color: white;
     border-radius: 8px;
     border: none;
+  }
+
+  .timerBox {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 6px;
+    width: 75px;
+  }
+
+  #hourglassIcon {
+    margin-right: 6px;
+    font-family: "FontAwesome";
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  #timerText {
+    font-size: 16px;
   }
 
   .answer {
@@ -192,85 +267,6 @@
     border-color: #ef4444;
   }
 
-  .quizHeader {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
-    font-weight: bold;
-    color: #1b1535;
-  }
-
-  .timerBox {
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    border-radius: 6px;
-    width: 75px;
-  }
-
-  #hourglassIcon {
-    margin-right: 6px;
-    font-family: "FontAwesome";
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  #timerText {
-    font-size: 16px;
-  }
-
-  /* STILIZZAZIONE DA ZERO DEL CHECKBOX */
-
-  .conditions {
-    appearance: none;
-    /* INSERITI PER TOGLIERE LA STILIZZAZIONE STANDARD  DEL CHECKBOX */
-    -webkit-appearance: none;
-    /* <----  */
-    vertical-align: middle;
-    margin-left: 6px;
-    margin-bottom: 1px;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #1b1535;
-    border-radius: 4px;
-    background-color: #ffffff;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .conditions:checked {
-    background-color: #1b1535;
-  }
-
-  .conditions:checked::after {
-    content: "✓";
-    color: #fff;
-    font-size: 11px;
-    font-weight: bold;
-    position: absolute;
-    top: -3px;
-    left: 0.5px;
-  }
-
-  .labelConditions {
-    color: #494b52;
-    font-style: italic;
-  }
-
-  .buttonDisabled {
-    background-color: #cccccc;
-    color: #666666;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  .buttonDisabled:hover {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-
   /* Pagina risultati*/
   .resultsBar {
     width: 250px;
@@ -303,6 +299,64 @@
     font-weight: bold;
   }
 
+  .textResults {
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .corrette {
+    color: #22C55E;
+    background-color: #E2F5E2;
+  }
+
+  .errate {
+    color: #FF6467;
+    background-color: rgba(175, 52, 59, 0.308);
+  }
+
+  .percentPromosso {
+    color: #22C55E;
+  }
+
+  .percentBocciato {
+    color: #FF6467;
+  }
+
+  .resultsDivsContainer {
+    padding: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .resultsDivs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .resultsNumber {
+    padding: 2px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 16px;
+    width: 125px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .resultsInfo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
   .buttonsContainer {
     margin-top: 0;
     text-align: center;
@@ -326,62 +380,13 @@
     cursor: pointer;
   }
 
-  .corrette {
-    color: #22C55E;
-    background-color: #E2F5E2;
-  }
-
-  .errate {
-    color: #FF6467;
-    background-color: rgba(175, 52, 59, 0.308);
-  }
-
-  .percentPromosso {
-    color: #22C55E;
-  }
-
-  .percentBocciato {
-    color: #FF6467;
-  }
-
-  .resultsDivs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-  }
-
-  .resultsDivsContainer {
-    padding: 12px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .resultsNumber {
-    padding: 2px;
-    font-size: 32px;
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 16px;
-    width: 125px;
-    border-radius: 10px;
-    margin-top: 10px;
-  }
-
-  .resultsInfo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .textResults {
+  .legendResults {
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+    margin-top: 1.5rem;
     text-align: center;
-    padding: 10px 0;
-    border-radius: 8px;
-    font-size: 22px;
-    font-weight: bold;
+    color: #494b52;
+    font-style: italic;
   }
 
   .divResults {
@@ -405,11 +410,6 @@
     margin-bottom: 10px;
   }
 
-  .default {
-    background-color: #ffffff;
-    color: #494b52;
-  }
-
   .chooseAnswer {
     position: relative;
     padding: 8px 12px;
@@ -423,13 +423,13 @@
     align-items: center;
   }
 
+  .default {
+    background-color: #ffffff;
+    color: #494b52;
+  }
+
   .cross {
     color: red;
     font-weight: bold;
     margin-right: 4px;
-  }
-
-  .questNum {
-    width: 12.5%;
-    text-align: center;
   }
