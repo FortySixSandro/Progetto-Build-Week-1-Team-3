@@ -400,7 +400,6 @@ function renderWelcome() {
   checkboxConditions.type = "checkbox";
   checkboxConditions.classList.add("conditions");
 
-  // testo prima, checkbox dopo
   labelConditions.append(
     "Prometto di rispondere da solo e senza l'aiuto di nessuno",
     checkboxConditions,
@@ -471,7 +470,7 @@ window.onload = () => {
 };
 
 function renderQuiz() {
-  //Pulizia del contenuto precedente (renderWelcome o una domanda precedente)
+  //Pulizia del contenuto precedente
   container.textContent = "";
 
   const q = shuffledQuestions[currentQuestion];

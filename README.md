@@ -7,31 +7,43 @@ Progetto realizzato in HTML, CSS e JavaScript puro, senza librerie né framework
 ## 📸 Screenshot
 
 <p align="center">
-Schermate iniziali con bottoni delle categorie e checkbox sia premuti che non
-  <img src="assets/img/screenshots/benvenuto.png" alt="Schermata iniziale" width="400">
-  <img src="assets/img/screenshots/benvenuto2.png" alt="Schermata iniziale con pulsanti e checkbox attivi" width="400">
+  <em>Schermate iniziali con bottoni delle categorie e checkbox, sia premuti che non premuti.</em>
 </p>
 <p align="center">
-Una domanda tipo si presenta in questo modo, con il numero della domanda sul numero totale di domande del quiz, una dicitura che fa capire a che tipo di linguaggio di programmazione appartiene la domanda e un timer che scorre insieme ad una clessidra che gira.
+  <img src="assets/img/screenshots/benvenuto.png" alt="Schermata iniziale" width="400">
+  &nbsp;&nbsp;
+  <img src="assets/img/screenshots/benvenuto2.png" alt="Schermata iniziale con pulsanti e checkbox attivi" width="400">
+</p>
 
-  <img src="assets/img/screenshots/quiz.png" alt="Schermata domanda quiz" width="400">
-  </p>
 <p align="center">
-Se la risposta alla domanda è stata selezionata giusta si evidenzia di verde, altrimenti se è stata selezionata errata si evidenzia di rosso quella errata e di verde quella giusta.
+  <em>Una domanda tipo si presenta in questo modo: con il numero della domanda sul totale delle domande del quiz, una dicitura che indica il linguaggio di programmazione della domanda e un timer che scorre insieme a una clessidra che gira.</em>
+</p>
+<p align="center">
+  <img src="assets/img/screenshots/quiz.png" alt="Schermata domanda quiz" width="400">
+</p>
 
+<p align="center">
+  <em>Se la risposta selezionata è corretta si evidenzia in verde; se è errata, si evidenzia in rosso quella sbagliata e in verde quella giusta.</em>
+</p>
+<p align="center">
   <img src="assets/img/screenshots/quizGiusto.png" alt="Schermata domanda corretta" width="400">
+  &nbsp;&nbsp;
   <img src="assets/img/screenshots/quizErrato.png" alt="Schermata domanda errata" width="400">
-  </p>
-  <p align="center">
-Schermata di fine quiz con grafico e percentuale di domande corrette ed errate.
+</p>
 
+<p align="center">
+  <em>Schermata di fine quiz con grafico e percentuale delle domande corrette ed errate.</em>
+</p>
+<p align="center">
   <img src="assets/img/screenshots/risultato.png" alt="Schermata finale" width="400">
-  </p>
-  <p align="center">
-Le domande con risposta giusta nella schermata Mostra Risultati della parte finale si presentano evidenziate in verde ma con una X rossa accanto se la domanda non è stata data in tempo, evidenziata in verde se corretta ed evidenziata in rosso quella errata e in verde quella giusta se selezionata una risposta errata
+</p>
 
+<p align="center">
+  <em>Nella schermata "Mostra Risultati" della parte finale, le domande con risposta giusta sono evidenziate in verde ma con una X rossa accanto se la domanda non è stata data in tempo; sono evidenziate in verde se corrette, mentre in caso di risposta errata si evidenzia in rosso quella sbagliata e in verde quella giusta.</em>
+</p>
+<p align="center">
   <img src="assets/img/screenshots/risultatoDomande.png" alt="Schermata domande errate e corrette" width="400">
-  </p>
+</p>
 
 
 ## ✨ Funzionalità
