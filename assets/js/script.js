@@ -425,7 +425,7 @@ function renderWelcome() {
 
   CATEGORIES.forEach((category) => {
     const btnCategory = document.createElement("button");
-    btnCategory.classList.add("categoryBtn", "categoryClass");
+    btnCategory.classList.add("categoryBtn");
     btnCategory.textContent = category;
 
     if (category === "JavaScript") {
