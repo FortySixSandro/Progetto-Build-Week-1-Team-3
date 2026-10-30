@@ -422,6 +422,18 @@ body {
   align-items: center;
 }
 
+.correct {
+  background-color: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+.incorrect {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
 .default {
   background-color: #ffffff;
   color: #494b52;

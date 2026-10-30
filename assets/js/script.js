@@ -881,9 +881,9 @@ function showResults() {
         // dall'utente e sarà evidenziata in verde la risposta corretta
       } else {
         if (answer === quest.correct_answer) {
-          chooseAnswer.classList.add("true");
+          chooseAnswer.classList.add("correct");
         } else if (answer === userArrayAnswer && answer !== quest.correct_answer) {
-          chooseAnswer.classList.add("false");
+          chooseAnswer.classList.add("incorrect");
         } else {
           chooseAnswer.classList.add("default");
         }
