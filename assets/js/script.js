@@ -864,7 +864,7 @@ function showResults() {
       chooseAnswer.classList.add("chooseAnswer");
 
       //Se l'utente non risponde alla domanda
-      if (!userArrayAnswer) {
+      if (userAnswers[index] === undefined || userAnswers[index] === null) {
         if (answer === quest.correct_answer) {
           // Si aggiunge la classe true alla domanda corretta anche se non selezionata, non si evidenzia niente di rosso (classe false) e quando viene premuto
           // il bottone Mostra Risultati nella schermata di renderResults, la risposta non data sarà visualizzata in verde con una X rossa
