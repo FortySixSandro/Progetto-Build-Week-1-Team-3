@@ -153,8 +153,8 @@ const QUESTIONS = [
   {
     question:
       "Quale attributo di un link apre la destinazione in una nuova pagina?",
-    correct_answer: 'target="_blank"',
-    incorrect_answers: ['href="_blank"', 'rel="_blank"', 'new="_blank"'],
+    correct_answer: "target=\"_blank\"",
+    incorrect_answers: ["href=\"_blank\"", "rel=\"_blank\"", "new=\"_blank\""],
     category: "HTML",
   },
   {
@@ -188,8 +188,8 @@ const QUESTIONS = [
   },
   {
     question: "Cosa restituisce `typeof null` in JavaScript?",
-    correct_answer: '"object"',
-    incorrect_answers: ['"null"', '"undefined"', '"boolean"'],
+    correct_answer: "\"object\"",
+    incorrect_answers: ["\"null\"", "\"undefined\"", "\"boolean\""],
     category: "JavaScript",
   },
   {
@@ -428,11 +428,11 @@ function renderWelcome() {
     btnCategory.classList.add("categoryBtn", "categoryClass");
     btnCategory.textContent = category;
 
-    if (category === 'JavaScript') {
+    if (category === "JavaScript") {
       btnCategory.classList.add("JavaScript");
-    } else if (category === 'HTML') {
+    } else if (category === "HTML") {
       btnCategory.classList.add("HTML");
-    } else if (category === 'CSS') {
+    } else if (category === "CSS") {
       btnCategory.classList.add("CSS");
     }
 
@@ -488,11 +488,11 @@ function renderQuiz() {
   questionCategory.classList.add("questionCategory");
   questionCategory.textContent = q.category;
 
-  if (q.category === 'JavaScript') {
+  if (q.category === "JavaScript") {
     questionCategory.style.backgroundColor = "#739c5f";
-  } else if (q.category === 'HTML') {
+  } else if (q.category === "HTML") {
     questionCategory.style.backgroundColor = "#d6bc6c";
-  } else if (q.category === 'CSS') {
+  } else if (q.category === "CSS") {
     questionCategory.style.backgroundColor = "#5995af";
   }
 
@@ -753,7 +753,9 @@ function renderResults() {
   correctAnswerNumber.textContent = `${score}/${total}`;
   correctAnswerText.textContent = "Risposte corrette";
 
-  wrongAnswerNumber.textContent = `${total - score}/${total}`;
+  let wrongScore = total - score;
+
+  wrongAnswerNumber.textContent = `${wrongScore}/${total}`;
   wrongAnswerText.textContent = "Risposte errate";
 
   divContainerAnswers.appendChild(divCorrectAnswerNumber);

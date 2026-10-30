@@ -6,7 +6,9 @@ Progetto realizzato in HTML, CSS e JavaScript puro, senza librerie né framework
 
 ## 📸 Screenshot
 
-
+<p>
+  <img src="assets/img/screenshots/benvenuto.png" alt="Schermata iniziale" width="400">
+</p>
 
 ## ✨ Funzionalità
 
@@ -40,14 +42,13 @@ quiz-app/
         ├── bg.jpg
         ├── epicode-logo.png
         └── screenshots/
-            ├── screen1.png
-            ├── screen1.png
-            ├── screen1.png
-            ├── screen1.png
-            ├── screen1.png
-            ├── screen1.png
-            ├── screen1.png
-            └── screen1.png
+            ├── benvenuto.png
+            ├── benvenuto2.png
+            ├── quiz.png
+            ├── quizErrato.png
+            ├── quizGiusto.png
+            ├── risultato.png           
+            └── risultatoDomande.png
 ```
 
 ## 🚀 Come avviarlo
